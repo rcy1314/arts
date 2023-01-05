@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>蓝屏 on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/%E8%93%9D%E5%B1%8F/</link>
+    <description>Recent content in 蓝屏 on NOISE&amp;分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 04 Sep 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/%E8%93%9D%E5%B1%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows10&#43;7系统蓝屏代码大全蓝屏解决方法</title>
+      <link>https://rcy1314.github.io/noise/post/windows10&#43;7%E7%B3%BB%E7%BB%9F%E8%93%9D%E5%B1%8F%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%E8%93%9D%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Sat, 04 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/windows10&#43;7%E7%B3%BB%E7%BB%9F%E8%93%9D%E5%B1%8F%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%E8%93%9D%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
+      <description>类别Ⅰ 硬件驱动问题 包括： 0x0000000A IRQL_NOT_LESS_OR_EQUAL 0x0000001E KMODE_EXCEPTION_NOT_HANDLED 0x00000050 PAGE_FAULT_IN_NONPAGED_AREA 0x0000008E KERNEL_MODE_EXCEPTION_NOT_HANDLED 0x000000B4 VIDEO_DRIVER_INIT_FAILURE （常在开机时出现） 0x000000C5 DRIVER_CORRUPTED_EXPOOL 0x000000D1 DRIVER_IRQL_NOT_LESS_OR_EQUAL（此代码也有可能是系统故障或者中毒） 0x00000116 VIDEO_TDR_ERROR（显卡驱动问题） 这几个错误代码蓝屏基本上都是硬件驱动程序错误导致的，解决办法也很简单，安装最新的公版非beta硬件驱动。如果无法进入系统而又需要在线下载驱动程序，可以尝试使用带网络连接的安全模式进行下载。
+类型Ⅱ 硬件出伤 包括： 0x0000001A MEMORY_MANAGEMENT（硬盘或内存损坏，可能是硬盘/内存老化，内存接触不良，硬盘单次使用过于频繁等） 0x00000023 FAT_FILE_SYSTEM （硬盘FAT16/FAT32格式分区碎片过多，出现坏道或者出现物理损坏） 0x00000024 NTFS_FILE_SYSTEM（硬盘NTFS格式分区碎片过多，出现坏道或者出现物理损坏） 0x00000051 REGISTRY_ERROR（注册表出现问题，多有可能是硬盘出现问题） 0x0000007F UNEXPECTED_KERNEL_MOED_TRAP（硬件超频，过热，与主板不兼容等） 0x0000009C MACHINE_CHECK_EXCEPTION（CPU超频过度） 0x0000009F DRIVER_POWER_STATE_FAILURE（电源硬伤） 0x000000ED UNMOUNTABLE_BOOT_VOLUME（硬盘坏道或损坏，常在开机时出现） 0x000000F4 CRITICAL_OBJECT_TERMINATION（内存问题） 0x00000124 IRQL_NOT_LESS_OR_EQUAL（电源或者散热无法带动或很好地兼容CPU，多发生于高配组装台式机） 如果遇到这些错误代码，说明你的机子对应的硬件可能受到了损伤，必须还原其状态、返厂修复或者更换。 硬盘碎片可以在资源管理器窗口右键单击磁盘驱动器进行清理，硬盘坏道可以打开系统运行（快捷键win+r），输入chkdsk :/f（是驱动卷号，如C盘即chkdsk C:/f）并回车运行。
+类型Ⅲ 软件问题（含系统、BIOS、中毒问题） 包括： 0x0000003B SYSTEM_SERVICE_EXCEPTION 0x0000005E CRITICAL_SERVICE_FAILED 0x0000007B INACESSIBLE_BOOT_DEVICE 0x0000007E SYSTEM_THREAD_EXCEPTION_NOT_HANDLED（多发生于雨林木风等改装系统，亦有可能是电脑中毒引起） 0x000000A5 ACPI_BIOS_ERROR 0x000000C2 BAD_POOL_CALLER 0xC000021A STATUS_SYSTEM_PROCESS_TERMINATED（常发生于开机时，以Win8及以上系统为多） 如果遇到这些错误代码（0xA5、0x7B除外），首先进行杀毒，若杀毒后仍未解决，说明你的某些软件与系统不兼容，或者你的系统出现了问题，需要进行排查。尤其注意蓝屏时运行的程序。检查它们的更新，如果依然不能解决问题就将其卸载；如果是系统问题，可以先更改部分注册表 对应值（具体方法需百度，比如0x7E在修改HKEY_LOCAL_MACHINESYSTEMControlSet001ServicesIntelppm的start值为4后即有解决可能），如还不能解决问题，则不得不重做系统。 0xA5问题则需要升级bios，具体方法请根据电脑（bios）品牌百度查询。 0x7B问题则先需要设置bios的SATA Mode改为IDE兼容，再按照上述解决办法进行排错。这个代码基本不会出现在Windows Vista及以上的系统中，因为出现此错误代码的原因是Windows XP不自带AHCI硬盘驱动而导致“不认识”AHCI硬盘，而Vista及以上系统则自带这个驱动。</description>
+    </item>
+    
+  </channel>
+</rss>

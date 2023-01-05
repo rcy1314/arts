@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>相机调色 on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/%E7%9B%B8%E6%9C%BA%E8%B0%83%E8%89%B2/</link>
+    <description>Recent content in 相机调色 on NOISE&amp;分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Sep 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/%E7%9B%B8%E6%9C%BA%E8%B0%83%E8%89%B2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>索尼相机前后期调色</title>
+      <link>https://rcy1314.github.io/noise/post/%E7%B4%A2%E5%B0%BC%E7%9B%B8%E6%9C%BA%E5%89%8D%E5%90%8E%E6%9C%9F%E8%B0%83%E8%89%B2/</link>
+      <pubDate>Mon, 13 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/%E7%B4%A2%E5%B0%BC%E7%9B%B8%E6%9C%BA%E5%89%8D%E5%90%8E%E6%9C%9F%E8%B0%83%E8%89%B2/</guid>
+      <description>索尼相机前后期调色 前言：这里的调色预设适用于任何相机和场景
+前期： 读懂格式：历史消息里已给出关于格式的科普，这里只说明具有更好的宽容度的格式可后期 的范围越广。
+前期：读懂索尼自带图文配置方案 主要读伽玛值
+PP1 伽玛值：Movie 电影格式
+PP2 伽玛值：still 介于照片和电影之间
+PP3 伽玛值：ITU709 （709 直出）
+PP4 伽玛值：709
+PP5 伽玛值：cine1 电影胶片
+PP6 伽玛值：cine2
+PP7 伽玛值：S-Log2 log 格式偏灰，保护高光
+PP8 伽玛值：S-Log3 保护暗部细节
+PP9 伽玛值：S-Log3 其他参数如黑色等级（字面意思）根据实际环境可调
+如上所述，相机可通过调整伽玛值可还原人眼看到的色彩 在 相 机 内 伽 玛 值 选 项 里 包 含 （ movie,still,cine1,cine2,cine3,cine4,lut709,lut709 800%,s-log2,s-log3）其中 cine 主要表现不同亮度与灰阶的关系，黑伽玛则暗部层次关系 以索尼 A7M3 为例可配参数 cody blue 图文配置（PP1-PP4）
+黑色等级:+2
+伽玛： cine4
+黑伽玛： 范围：宽 等级+4
+膝点： 模式：手动 点：80% 斜率：+2 色彩模式：pro 饱和度：—5 色彩相位 0</description>
+    </item>
+    
+  </channel>
+</rss>

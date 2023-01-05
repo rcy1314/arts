@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>I AM Watching You on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/i-am-watching-you/</link>
+    <description>Recent content in I AM Watching You on NOISE&amp;分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Sep 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/i-am-watching-you/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I AM Watching You 使用文档</title>
+      <link>https://rcy1314.github.io/noise/post/i-am-watching-you-%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</link>
+      <pubDate>Sat, 11 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/i-am-watching-you-%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</guid>
+      <description>手动部署 安装 下载 WebMonitor 的源码
+git clone https://github.com/LogicJake/WebMonitor.git cd WebMonitorCopy to clipboardErrorCopied 下载完成后安装依赖
+pip install -r requirements.txtCopy to clipboardErrorCopied 如果需要使用无头浏览器，请确认已经安装 phantomjs，且 phantomjs 被添加到系统路径
+首次运行需要迁移数据库且设置管理账号，假设账号为 admin，密码为 password，运行端口为 8000
+python manage.py migrate python manage.py initadmin --username admin --password password python manage.py runserver 0.0.0.0:8000 --noreloadCopy to clipboardErrorCopied 非首次运行，只需指定端口
+python manage.py runserver 0.0.0.0:8000 --noreloadCopy to clipboardErrorCopied Docker 部署 安装 运行下面的命令下载 WebMonitor 镜像
+docker pull logicjake/webmonitorCopy to clipboardErrorCopied 然后运行 webmonitor 即可，假设账号为 admin，密码为 password，运行端口为 8000 *强烈建议通过 docker 文件夹映射参数 -v，将数据库文件保存到主机，否则在容器重建之后会丢失数据库文件，假设映射的主机目录为 /etc/webmonitor*</description>
+    </item>
+    
+  </channel>
+</rss>

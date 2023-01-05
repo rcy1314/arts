@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>宝塔面板 on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF/</link>
+    <description>Recent content in 宝塔面板 on NOISE&amp;分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 16 Sep 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>宝塔面板安装Flarum论坛</title>
+      <link>https://rcy1314.github.io/noise/post/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85flarum%E8%AE%BA%E5%9D%9B/</link>
+      <pubDate>Thu, 16 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85flarum%E8%AE%BA%E5%9D%9B/</guid>
+      <description>Flarum是一款新式的论坛，虽然还处于不太稳定的测试版，但是它非常好看，这就够了
+一些链接：官方手册(英语) | 官方论坛(英语) | 中文论坛
+本文使用的是Flarum 0.1.0-beta.12
+官方不建议将Flarum用于生产环境，测试版软件有潜在的不稳定风险。
+安装步骤 环境要求 PHP版本 &amp;gt;= 7.2
+部分插件不支持7.4，推荐使用7.3或者7.2记得解禁putenv函数
+内存 &amp;gt;= 2G
+论坛和插件使用composer进行安装，内存不够的话composer进程会被杀死。如果物理内存不够的话可以加2G虚拟内存。
+宝塔面板新建站点 创建完以后先把防跨站关了：
+然后去网站目录删除index.html 404.html .htaccess这几个文件。
+命令行安装 登陆SSH，切换到网站目录
+#首先要确保目录是空的 ls -la #使用composer安装 composer create-project flarum/flarum . --stability=beta 如果出现红框说明环境有问题：
+安装目录非空：
+putenv函数被禁用：
+显示killed或者已杀死：系统内存不够，使用free -h查看所有内存，确保可用内存在2G以上，不够的话加点虚拟内存。
+检查是否安装成功 #更改文件所有者 chown www:www . -R #查看文件列表 ls -la 如果安装没有问题，文件结构应该跟图中类似
+网站目录设置 打开防跨站保护，把运行目录改成/public
+Nginx伪静态设置，Apache无需配置 设置成下面的内容
+location / { try_files $uri $uri/ /index.php?$query_string; } 访问网站完成安装 表前缀可为空
+安装完成 后续配置 配置文件说明 配置文件叫config.php：
+&amp;lt;?php return array ( &amp;#39;debug&amp;#39; =&amp;gt; false, /*调试模式开关*/ &amp;#39;database&amp;#39; =&amp;gt; array ( &amp;#39;driver&amp;#39; =&amp;gt; &amp;#39;mysql&amp;#39;, &amp;#39;host&amp;#39; =&amp;gt; &amp;#39;localhost&amp;#39;, &amp;#39;port&amp;#39; =&amp;gt; 3306, &amp;#39;database&amp;#39; =&amp;gt; &amp;#39;数据库名&amp;#39;, &amp;#39;username&amp;#39; =&amp;gt; &amp;#39;数据库用户名&amp;#39;, &amp;#39;password&amp;#39; =&amp;gt; &amp;#39;数据库密码&amp;#39;, &amp;#39;charset&amp;#39; =&amp;gt; &amp;#39;utf8mb4&amp;#39;, &amp;#39;collation&amp;#39; =&amp;gt; &amp;#39;utf8mb4_unicode_ci&amp;#39;, &amp;#39;prefix&amp;#39; =&amp;gt; &amp;#39;&amp;#39;, &amp;#39;strict&amp;#39; =&amp;gt; false, &amp;#39;engine&amp;#39; =&amp;gt; &amp;#39;InnoDB&amp;#39;, &amp;#39;prefix_indexes&amp;#39; =&amp;gt; true, ), &amp;#39;url&amp;#39; =&amp;gt; &amp;#39;&amp;lt;https://chrxw.</description>
+    </item>
+    
+    <item>
+      <title>nginx通过反向代理实现未备案域名访问</title>
+      <link>https://rcy1314.github.io/noise/post/nginx%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E6%9C%AA%E5%A4%87%E6%A1%88%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE/</link>
+      <pubDate>Thu, 09 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/nginx%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E6%9C%AA%E5%A4%87%E6%A1%88%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE/</guid>
+      <description>本方法实现前提是8123端口（也可以是其他端口）面对互联网打开。server里面监听80端口，然后反向代理8123端口。1.其中server_name部分是我的域名可以替换成其他想要的域名2.8123是我指定的端口可以改成其他端口，最后访问http://你的域名.com 浏览器直接跳转成http://你的域名:81233.
+本机8123端口业务一定要先配置通。下面给出server部分代码。
+server { listen 80; server_name www.你的域名 你的域名.cn; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; access_log off; location / { proxy_pass &amp;lt;http://localhost:8123&amp;gt;; } } </description>
+    </item>
+    
+    <item>
+      <title>Docker安装宝塔面板教程</title>
+      <link>https://rcy1314.github.io/noise/post/docker%E5%AE%89%E8%A3%85%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Wed, 08 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/docker%E5%AE%89%E8%A3%85%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E6%95%99%E7%A8%8B/</guid>
+      <description>宝塔界面建站非常方便，但是没有官方的docker版，pch18大神移植到docker了，正好可以用在unraid上面，不过有一些坑需要注意，下面试安装步骤
+1.首先docker设置里先启用主机访问自定义网络和保留用户定义的网络
+2.打开 unRAID 的 Docker 页面，并选择添加容器
+3.填写配置容器参数
+版本命名说明（根据自己的需求替换镜像地址）
+pch18/baota或pch18/baota:latest 等同pch18/baota:lnmp pch18/baota:lnmp 为最新版本的官方纯净安装的基础上安装nginx,mysql,php pch18/baota:lnp 为官方版本纯净安装的基础上安装nginx,php(不内置mysql,用于外置数据库的环境) pch18/baota:lamp 为官方版本纯净安装的基础上安装apache,php pch18/baota:lap 为官方版本纯净安装的基础上安装apache,php(不内置mysql,用于外置数据库的环境) pch18/baota:clear 为官方版本纯净安装, 不默认安装nginx,mysql,php等程序 4.映射路径
+第一个路径首次配置，容器路径不要直接指定www，换成别的，比如我的other,后面再改回来
+5.设置好后，点击 APPLY，这里会根据你选择的镜像，自动进行下载
+安装成功后，打开浏览器输入上面设置的ip再带上端口号8888就可以访问了，比如我的：192.168.1.25:8888默认的用户名是：username ，默认密码是：password
+但是，这里还没彻底完成，因为到这里，虽然能进行正常运行了，但是比如你添加了一些软件或者做了宝塔面板的升级，然后你去重新编辑该 Docker，它是不会保存这些设置的，我们还需要进行一些操作。
+6.登入进去后点击宝塔面板左侧的文件，在右侧的路径，选择 根目录-www，然后选定除去 wwwroot 文件夹以外的所有文件夹，点击右上角的复制
+然后选择根目录 - other 文件夹，右上角点击 粘贴所有，最终结果如图
+5、接下来，我们重新编辑下 宝塔 Docker的配置，只需要修改文件夹路径即可
+修改完成，点击 APPLY 保存，到此，宝塔已经可以完整正常使用了，并且每次做了宝塔内的升级、安装等操作后，配置都会进行保存。
+其他优化设置
+1.这里你折腾了几次，宝塔面板的机制是每一次都会在docker 的img文件里面 新建一个卷 volume每次 大概4G 容量，而docker映像默认是20G，如果你没有修改的话。
+所以这里我们需要删除无用的卷。调用unraid的终端 ，命令如下
+docker volume prune
+回车之后输入y 确认删除
+2.宝塔面板的webui链接设置，高级选项在webui项填入值：
+http://[IP]:[PORT:8888]
+3.图标美化修改
+设置上图中Icon URL地址即可
+最后列出本项目的源地址
+github issue传送门: https://github.com/pch18-docker/baotadockerHub传送门: https://hub.docker.com/r/pch18/baota/作者主页传送门: https://pch18.cn/archives/docker-baota.html</description>
+    </item>
+    
+  </channel>
+</rss>

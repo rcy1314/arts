@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html class='theme-container'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+
+    <title>I AM Watching You 使用文档</title>
+
+    <link rel="canonical" href="https://rcy1314.github.io/noise/">
+
+    
+    <link rel='stylesheet' type='text/css' href='/noise/css/common.min.2e0fcb1a7000d167fb8edc8795fd7fa375f12491a92c7e9c4e7cbaabf45d4c90.css'/>
+    
+    <link rel='stylesheet' media='screen and (min-width: 1201px)' type='text/css'
+          href='/noise/css/normal.min.31aebf352f9ce7e94065b4d20477665d772393827a9185be8575521ab89ce57b.css'/>
+    
+    <link rel='stylesheet' media='screen and (max-width: 1200px)' type='text/css'
+          href='/noise/css/small.min.e47b2efc4087d6f608db7a76b068966259b87238bb82e48604c1eac68e99b6a8.css'/>
+
+    
+    <link rel='stylesheet' type='text/css' href='/noise/css/androidstudio.min.min.c0869a17349d3f1bdd078763e8c11ec9808c9f38239bb254720577662fba87bf.css'/>
+    
+    <script src="/noise/js/highlight.min.min.527b2c4dd19de47518d2a0fbbf849f2cf1230a7e6e40ee0f416f4de8f8539fbf.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<script>
+    hljs.highlightAll();
+</script>
+<body>
+
+<div class="top">
+    <a href="/">
+        <img src="/img/logo.png"/>
+    </a>
+    <nav>
+        
+        <a href="/noise/post/">
+            Blog
+        </a>
+        
+        <a href="/noise/projects/">
+            收藏阁
+        </a>
+        
+        <a href="/noise/note/">
+            月度分享
+        </a>
+        
+        <a href="/noise/about">
+            About
+        </a>
+        
+        <a href="/noise/404.html">
+            404
+        </a>
+        
+    </nav>
+</div>
+
+<div id="center" class='center' >
+    
+<header class="center_head">
+    <h1>
+    I AM Watching You 使用文档
+</h1>
+<div style="text-align: center;opacity: 0.5;margin-top: 0.5em;">
+    2021.09.11 10:00
+</div>
+</header>
+
+    
+<div class="center_main">
+    <a href="../" class="center_main_contents_left">
+        <h1>My Blog</h1>
+    </a>
+    <style>
+    .content_post h2::before {
+        content: "※ ";
+    }
+
+    .content_post h3::before {
+        content: "✧ ";
+    }
+</style>
+<article class="content_post heti heti--ancient">
+    <h2 id="手动部署httpswwwlogicjakexyzwebmonitorinstallid手动部署"><a href="https://www.logicjake.xyz/WebMonitor/#/install?id=%E6%89%8B%E5%8A%A8%E9%83%A8%E7%BD%B2">手动部署</a></h2>
+<h3 id="安装httpswwwlogicjakexyzwebmonitorinstallid安装"><a href="https://www.logicjake.xyz/WebMonitor/#/install?id=%E5%AE%89%E8%A3%85">安装</a></h3>
+<p>下载 <a href="https://github.com/LogicJake/WebMonitor">WebMonitor</a> 的源码</p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">git clone https://github.com/LogicJake/WebMonitor.git
+cd WebMonitorCopy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>下载完成后安装依赖</p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">pip install -r requirements.txtCopy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>如果需要使用无头浏览器，请确认已经安装 phantomjs，且 phantomjs 被添加到系统路径</p>
+<p>首次运行需要迁移数据库且设置管理账号，假设账号为 admin，密码为 password，运行端口为 8000</p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">python manage.py migrate
+python manage.py initadmin --username admin --password password
+python manage.py runserver 0.0.0.0:8000 --noreloadCopy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>非首次运行，只需指定端口</p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">python manage.py runserver 0.0.0.0:8000 --noreloadCopy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h2 id="docker-部署httpswwwlogicjakexyzwebmonitorinstalliddocker-部署"><a href="https://www.logicjake.xyz/WebMonitor/#/install?id=docker-%E9%83%A8%E7%BD%B2">Docker 部署</a></h2>
+<h3 id="安装httpswwwlogicjakexyzwebmonitorinstallid安装-1"><a href="https://www.logicjake.xyz/WebMonitor/#/install?id=%E5%AE%89%E8%A3%85-1">安装</a></h3>
+<p>运行下面的命令下载 WebMonitor 镜像</p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">docker pull logicjake/webmonitorCopy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>然后运行 webmonitor 即可，假设账号为 admin，密码为 password，运行端口为 8000
+*<strong>强烈建议通过 docker 文件夹映射参数 -v，将数据库文件保存到主机，否则在容器重建之后会丢失数据库文件，假设映射的主机目录为 /etc/webmonitor*</strong></p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">docker run -d --name webmonitor -v /etc/webmonitor:/app/db -p 8000:8000 -e PORT=8000 -e USERNAME=admin -e PASSWORD=password logicjake/webmonitorCopy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>您可以使用下面的命令来关闭 webmonitor</p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">docker stop webmonitor</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h2 id="设置通知方式httpswwwlogicjakexyzwebmonitorhowid设置通知方式"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%AE%BE%E7%BD%AE%E9%80%9A%E7%9F%A5%E6%96%B9%E5%BC%8F">设置通知方式</a></h2>
+<p>支持7种通知方式：邮件，pushover， Server 酱的微信提醒，Bark，自定义GET/POST通知, Slack 通知以及 Telegram 通知。邮件提醒只需要设置接收邮箱，微信提醒需要申请 SCKEY，自行搜索 Server 酱注册，简单免费。Pushover 需要填写注册就得到的 User Key。Bark需要安装<a href="https://github.com/Finb/Bark">客户端</a>取得对应设备Key。Slack 需要填写“#”开头的 channel 名称，且需要保证 Slack app 已在该 channel 中。</p>
+<h3 id="设置系统邮箱httpswwwlogicjakexyzwebmonitorhowid设置系统邮箱"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E9%82%AE%E7%AE%B1">设置系统邮箱</a></h3>
+<p>如果采用邮件提醒，则必须设置“系统管理/系统邮箱”，该邮箱为提醒邮件的发信人。自行根据需要使用的邮箱查找相关设置，密码一般指授权码。</p>
+<p>系统邮箱配置只需设置一个，多于一个默认只生效第一条。</p>
+<h3 id="设置-pushover-applicationhttpswwwlogicjakexyzwebmonitorhowid设置-pushover-application"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%AE%BE%E7%BD%AE-pushover-application">设置 Pushover Application</a></h3>
+<p>如果采用 Pushover 提醒，则必须设置“系统管理/Pushover 设置”中的 Pushover api token。</p>
+<h3 id="设置-slackhttpswwwlogicjakexyzwebmonitorhowid设置-slack"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%AE%BE%E7%BD%AE-slack">设置 Slack</a></h3>
+<p>如果采用 Slack 提醒，则必须设置“系统管理/Slack 设置”中的 Slack OAuth Access Token。具体教程见：https://github.com/slackapi/python-slack-sdk/blob/main/tutorial/01-creating-the-slack-app.md</p>
+<h3 id="设置-telegram-bothttpswwwlogicjakexyzwebmonitorhowid设置-telegram-bot"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%AE%BE%E7%BD%AE-telegram-bot">设置 Telegram Bot</a></h3>
+<p>如果采用 Telegram 提醒，则必须设置“系统管理/Telegram Bot 设置”中的 Telegram Bot Token。</p>
+<h3 id="设置自定义getpost通知httpswwwlogicjakexyzwebmonitorhowid设置自定义getpost通知"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89getpost%E9%80%9A%E7%9F%A5">设置自定义GET/POST通知</a></h3>
+<p>如果采用自定义通知，则必须设置自定义网址。</p>
+<h4 id="gethttpswwwlogicjakexyzwebmonitorhowidget"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=get">GET</a></h4>
+<p>用<code>{header}</code>和<code>{content}</code>替换掉标题和内容的位置。以Bark为例，格式如下：</p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">https://api.day.app/yourkey/{header}/{content}Copy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h4 id="posthttpswwwlogicjakexyzwebmonitorhowidpost"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=post">POST</a></h4>
+<p><code>发送网址{data=}</code>。将要发送的<code>body</code>内容放在<code>{data=}</code>内，其中<code>{header}</code>和<code>{content}</code>替换掉标题和内容的位置。以WxPusher为例，格式如下：</p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">http://wxpusher.zjiecode.com/api/send/message{data={
+  &#34;appToken&#34;:&#34;AT_xxx&#34;,
+  &#34;content&#34;:{content},
+  &#34;summary&#34;:{header},
+  &#34;contentType&#34;:3,
+  &#34;uids&#34;:[&#34;UID_xxxx&#34;],
+  &#34;url&#34;:&#34;http://wxpusher.zjiecode.com&#34;
+}}Copy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h2 id="添加网页监控任务httpswwwlogicjakexyzwebmonitorhowid添加网页监控任务"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E6%B7%BB%E5%8A%A0%E7%BD%91%E9%A1%B5%E7%9B%91%E6%8E%A7%E4%BB%BB%E5%8A%A1">添加网页监控任务</a></h2>
+<p>在 任务管理 &gt; 网页监控管理 添加新任务</p>
+<ul>
+<li>必须选择一种通知方式</li>
+<li>默认抓取频率为5分钟，自行根据需要调整，单位分钟，不建议调太快，以防反爬</li>
+</ul>
+<h3 id="选择器httpswwwlogicjakexyzwebmonitorhowid选择器"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E9%80%89%E6%8B%A9%E5%99%A8">选择器</a></h3>
+<p>元素选择器类型可以选择 Xpath， Css selector 或 JsonPath。</p>
+<p>一行一个元素选择器，每一行的格式为：选择器名称{选择器内容}，例如：</p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">title{//*[@id=&#34;id3&#34;]/h3/text()}
+myurl{//*[@id=&#34;id3&#34;]/h3/text()}Copy to clipboardErrorCopied
+以下字段为系统默认保留字段，请不要使用且无法被覆盖：</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><ul>
+<li>url：该任务对应的监控网址</li>
+</ul>
+<p>可以借助浏览器 F12 直接 copy 前两种选择器，需要注意的是，往往浏览器 copy 得到是元素，而不是文本信息，需要做以下补充：</p>
+<h4 id="xpathhttpswwwlogicjakexyzwebmonitorhowidxpath"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=xpath">xpath</a></h4>
+<ul>
+<li>获取元素文本信息，在浏览器得到的选择器后加<code>/text()</code>，如
+<code>//*[@id=&quot;id3&quot;]/h3</code> =&gt; <code>//*[@id=&quot;id3&quot;]/h3/text()</code></li>
+<li>获取元素属性信息，在浏览器得到的选择器后加<code>/@属性名</code>，如想获取元素href值
+<code>//*[@id=&quot;id3&quot;]/h3</code> =&gt; <code>//*[@id=&quot;id3&quot;]/h3/@href</code></li>
+<li>获取元素及其子元素的所有文本信息，在浏览器得到的选择器后加<code>/string()</code>，如
+<code>//*[@id=&quot;id3&quot;]/h3</code> =&gt; <code>//*[@id=&quot;id3&quot;]/h3/string()</code></li>
+</ul>
+<h4 id="css-selectorhttpswwwlogicjakexyzwebmonitorhowidcss-selector"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=css-selector">css selector</a></h4>
+<ul>
+<li>获取元素文本信息，在浏览器得到的选择器后加<code>::text</code>，如
+<code>div#id3 &gt; h3</code> =&gt; <code>div#id3 &gt; h3::text</code></li>
+<li>获取元素属性信息，在浏览器得到的选择器后加<code>::attr(属性名)</code>，如想获取元素href值
+<code>div#id3 &gt; h3</code> =&gt; <code>div#id3 &gt; h3::attr(href)</code></li>
+</ul>
+<h4 id="jsonpathhttpswwwlogicjakexyzwebmonitorhowidjsonpath"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=jsonpath">JsonPath</a></h4>
+<p>针对返回 json 数据的接口, 可以使用 JsonPath 提取数据, 具体教程参考 <a href="https://goessner.net/articles/JsonPath/">https://goessner.net/articles/JsonPath/</a></p>
+<h3 id="消息体模板httpswwwlogicjakexyzwebmonitorhowid消息体模板"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E6%B6%88%E6%81%AF%E4%BD%93%E6%A8%A1%E6%9D%BF">消息体模板</a></h3>
+<p>消息体模板可为空，如果为空，则按照元素选择器的定义顺序以制表符为间隔拼接为字符串。下面介绍消息体模板的使用方式，如果元素选择器的设置为：</p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">title{//*[@id=&#34;id3&#34;]/h3/text()}
+myurl{//*[@id=&#34;id3&#34;]/h3/text()}Copy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>则消息体模板可以设置为：</p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">{title}的网址是{myurl}Copy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>如果title对应的元素选择器提取的内容为“WebMonitor真棒”，myurl对应的元素选择器提取的内容为“https://www.logicjake.xyz/WebMonitor”，则得到的消息内容为“WebMonitor真棒的网址是https://www.logicjake.xyz/WebMonitor”。</p>
+<h3 id="是否选择无头浏览器httpswwwlogicjakexyzwebmonitorhowid是否选择无头浏览器"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E6%98%AF%E5%90%A6%E9%80%89%E6%8B%A9%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8">是否选择无头浏览器</a></h3>
+<p>如果源网页没有异步加载，可以不使用无头浏览器获取网页</p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">建议先选择不使用，假如提交时提示获取不到文本信息，再使用无头浏览器尝试Copy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h3 id="正则表达式httpswwwlogicjakexyzwebmonitorhowid正则表达式"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">正则表达式</a></h3>
+<p>如果获取到的文本信息有冗余，可以采用正则进一步筛选，如
+<code>价格：1390</code>使用正则<code>([1-9]\d*)</code>提取到纯数字1390</p>
+<h3 id="监控规则httpswwwlogicjakexyzwebmonitorhowid监控规则"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E7%9B%91%E6%8E%A7%E8%A7%84%E5%88%99">监控规则</a></h3>
+<p>默认不填则文本发生变化就发通知，多规则请以&rsquo;;&lsquo;分开。存在规则的情况下，如果文本发生变化，从前往后检查规则，若符合其中一项规则就发通知。
+规则格式：-规则 参数
+支持以下规则：</p>
+<h4 id="-withouthttpswwwlogicjakexyzwebmonitorhowid-without"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=-without">-without</a></h4>
+<p>如：文本发生变化且文本内容不包含<code>上架</code></p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">-without 上架Copy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h4 id="-containhttpswwwlogicjakexyzwebmonitorhowid-contain"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=-contain">-contain</a></h4>
+<p>如：文本发生变化且文本内容包含<code>上架</code></p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">-contain 上架Copy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h4 id="-increasehttpswwwlogicjakexyzwebmonitorhowid-increase"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=-increase">-increase</a></h4>
+<p>如：文本发生变化且相较于旧值，数值增长超过<code>3</code>
+<code>如果文本内容不是纯数字，请用正则提取出纯数字，否则将会报错</code></p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">-increase 3Copy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h4 id="-decreasehttpswwwlogicjakexyzwebmonitorhowid-decrease"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=-decrease">-decrease</a></h4>
+<p>如：文本发生变化且相较于旧值，数值减少超过<code>3</code>
+<code>如果文本内容不是纯数字，请用正则提取出纯数字，否则将会报错</code></p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">-decrease 3Copy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h4 id="-equalhttpswwwlogicjakexyzwebmonitorhowid-equal"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=-equal">-equal</a></h4>
+<p>如：文本发生变化且等于某个值，数值等于<code>3</code>
+<code>如果文本内容不是纯数字，请用正则提取出纯数字，否则将会报错</code></p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">-equal 3Copy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h4 id="-lesshttpswwwlogicjakexyzwebmonitorhowid-less"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=-less">-less</a></h4>
+<p>如：文本发生变化且小于某个值，数值小于<code>3</code>
+<code>如果文本内容不是纯数字，请用正则提取出纯数字，否则将会报错</code></p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">-less 3Copy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h4 id="-morehttpswwwlogicjakexyzwebmonitorhowid-more"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=-more">-more</a></h4>
+<p>如：文本发生变化且大于某个值，数值大于<code>3</code>
+<code>如果文本内容不是纯数字，请用正则提取出纯数字，否则将会报错</code></p>
+<div class="highlight">
+    <span class="highlight-type"></span>
+    <pre><code class="language- hljs" data-lang="">-more 3Copy to clipboardErrorCopied</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h3 id="自定义请求头httpswwwlogicjakexyzwebmonitorhowid自定义请求头"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%B7%E6%B1%82%E5%A4%B4">自定义请求头</a></h3>
+<p>可以自定义请求时的请求头，主要用于设置Cookie，获取需要登录才能查看的页面，格式为字典，如
+<code>{'Cookie':'自定义cookie值'}</code></p>
+<h2 id="添加rss监控任务httpswwwlogicjakexyzwebmonitorhowid添加rss监控任务"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E6%B7%BB%E5%8A%A0rss%E7%9B%91%E6%8E%A7%E4%BB%BB%E5%8A%A1">添加RSS监控任务</a></h2>
+<p>可以在 任务管理 &gt; RSS监控任务管理 添加新RSS监控任务</p>
+<h2 id="任务状态查看httpswwwlogicjakexyzwebmonitorhowid任务状态查看"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81%E6%9F%A5%E7%9C%8B">任务状态查看</a></h2>
+<p>可以在任务状态栏目下查看所有任务，包括任务状态（run or stop），上次运行时间，上次运行结果，运行结果包括三类：</p>
+<ul>
+<li>监测到变化，最新值：{最新值}</li>
+<li>成功执行但未监测到变化</li>
+<li>出错显示异常信息</li>
+</ul>
+<p>可以通过修改任务状态，暂停或重启任务</p>
+<h2 id="数据导入导出httpswwwlogicjakexyzwebmonitorhowid数据导入导出"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA">数据导入导出</a></h2>
+<p>*<strong>WARNING: 网页监控任务和RSS监控任务的通知方式是通过外键与通知方式表连接，在数据表发生变化的情况下，外键id可能失效或无法和导出时保持一致，建议每次导入任务数据后检查通知方式是否正常。*</strong></p>
+
+</article>
+
+<div class="content_post_button">
+    
+    <button onclick="window.location.href = 'https:\/\/rcy1314.github.io\/noise\/post\/nginx%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E6%9C%AA%E5%A4%87%E6%A1%88%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE\/'">
+        <span style="color: var(--primary-color);">上一篇</span><br />nginx通过反向代理实现未备案域名访问
+    </button>
+    
+    
+    <button onclick="window.location.href = 'https:\/\/rcy1314.github.io\/noise\/post\/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4\/'">
+        <span style="color: var(--primary-color);">下一篇</span><br />docker基本命令
+    </button>
+    
+</div>
+<a class="back_top" href="javascript:window.scrollTo(0,0);">
+    <svg t="1660722824713" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="1359" width="64" height="64">
+        <path
+            d="M484 93.668c-231.038 0-418.333 187.296-418.333 418.335 0 231.038 187.296 418.327 418.333 418.327 231.036 0 418.333-187.289 418.333-418.327C902.334 280.964 715.036 93.668 484 93.668zM372.207 811.881c-0.412 8.174-4.906 12.669-13.493 13.493-6.545 0-11.863-0.614-15.946-1.841-4.504-1.639-6.545-4.906-6.133-9.813 1.629-4.906 4.695-7.148 9.199-6.746 6.948 1.639 10.215 0.613 9.813-3.066l0-96.902-12.266 0c-4.504-0.402-6.746-3.268-6.746-8.586 0.402-4.907 2.855-7.562 7.359-7.974l36.185 0c2.453 0 4.083 1.025 4.906 3.066 1.227-2.855 3.469-4.494 6.747-4.906l82.183 0c4.495 0.412 6.747 3.277 6.747 8.587-0.412 5.318-2.865 8.184-7.36 8.586l-36.798 0-2.453 11.652 23.919 0c10.215-0.402 14.92 3.891 14.106 12.88l0 63.17c-0.412 4.504-3.277 6.957-8.586 7.36-5.318-0.403-8.184-2.856-8.586-7.36l0-57.037c0-1.227-0.613-1.84-1.84-1.84l-43.545 0c-0.824 0.412-1.438 1.025-1.84 1.84l0 55.811c-0.412 4.906-3.277 7.57-8.586 7.974-5.318-0.403-8.184-3.067-8.586-7.974l0-61.943c0-8.586 3.68-12.88 11.04-12.88l14.719 0 3.066-11.652-25.759 0c-2.453 0-5.117-1.016-7.973-3.066-1.227 2.865-3.479 4.293-6.746 4.293l-6.747 0L372.207 811.881zM479.536 824.146c-3.277 4.907-7.571 5.722-12.879 2.454-2.865-1.227-7.571-3.891-14.106-7.974-6.133-3.277-10.838-5.52-14.106-6.746-6.133-2.855-8.586-6.334-7.359-10.426-1.227 2.051-3.68 4.504-7.36 7.359-0.412 0.412-0.824 0.824-1.227 1.227-9.41 7.762-20.239 13.896-32.505 18.399-5.73 1.629-9.813 0.201-12.266-4.294-1.639-4.906 0-8.586 4.906-11.039 18.802-7.762 30.253-15.534 34.345-23.306 4.494-7.359 6.746-21.054 6.746-41.091 0.403-5.722 3.067-8.788 7.973-9.2 5.309 0.412 8.174 3.479 8.586 9.2 0.814 20.852-1.639 36.798-7.36 47.837 4.083-4.906 9.401-5.107 15.946-0.613 4.907 2.865 11.442 6.546 19.626 11.04 3.68 2.453 6.334 4.092 7.973 4.906C481.375 814.736 482.391 818.828 479.536 824.146zM556.198 822.307l-41.704 0c-7.772-0.412-11.864-3.891-12.267-10.426l0-34.345c-0.412-8.989 3.68-13.282 12.267-12.88l42.931 0c7.763-0.402 11.653 3.891 11.653 12.88l0 34.958C569.48 819.029 565.188 822.307 556.198 822.307zM614.462 817.4c-6.545 0-11.652-0.824-15.332-2.453-4.092-2.051-5.318-5.309-3.68-9.813 1.629-4.906 5.107-6.747 10.426-5.52 11.04 2.453 15.735-1.841 14.106-12.88-0.412-8.174-5.933-18.399-16.56-30.665-3.68-3.68-4.293-9.2-1.84-16.56 4.494-13.895 7.561-24.532 9.199-31.892l-16.559 0c-1.227 0-2.051 0.824-2.453 2.453l0 110.395c-0.412 5.31-3.067 8.175-7.974 8.587-5.318-0.412-8.184-3.277-8.586-8.587l0-65.01c-1.227 1.639-2.865 2.453-4.906 2.453l-69.304 0c-4.504-0.402-6.957-3.268-7.359-8.586 0.402-5.31 2.855-8.175 7.359-8.587l14.72 0c-0.824-0.814-3.68-5.721-8.586-14.719-2.051-5.31-0.613-8.989 4.293-11.04l-7.36 0c-4.504-0.402-6.957-3.268-7.359-8.586 0.402-5.309 2.855-8.174 7.359-8.586l22.079 0c-0.824-1.227-1.227-2.453-1.227-3.681-1.227-4.082 0.613-7.359 5.52-9.813 5.721-2.041 9.401-1.016 11.04 3.066 1.227 3.68 2.654 7.158 4.293 10.427l20.239 0c4.494 0.412 6.947 3.277 7.359 8.586-0.412 5.318-2.865 8.184-7.359 8.586l-47.225 0c2.855 1.639 6.334 7.36 10.426 17.173 1.227 4.092 0.814 6.957-1.227 8.586l13.493 0c0.402-1.227 1.016-2.855 1.84-4.906 2.453-6.133 4.082-11.039 4.906-14.72 1.629-4.082 5.107-5.721 10.426-4.906 4.906 2.051 6.747 5.318 5.521 9.813-0.824 2.051-1.639 4.504-2.454 7.359-1.227 3.277-2.252 5.932-3.066 7.973l11.04 0c2.453 0 4.082 0.613 4.906 1.84l0-41.704c0-8.175 3.066-12.056 9.199-11.653l36.799 0c9.4 0 13.08 5.117 11.039 15.333 0 0.412-1.025 3.891-3.066 10.426-3.277 10.226-5.52 17.786-6.746 22.692-1.227 3.68-1.84 6.344-1.84 7.973 0.402 1.228 1.629 3.067 3.68 5.521 8.586 13.09 13.281 25.356 14.105 36.798C638.17 807.387 630.408 816.988 614.462 817.4zM646.896 466.315c-7.488 7.449-18.815 7.642-25.649 0.806-0.538-0.537-1.074-0.922-1.536-1.535L502.752 348.858l-0.192 280.106c0 9.139-8.601 16.549-19.198 16.549-10.598 0-18.738-7.41-18.738-16.549 0-0.729-0.115-1.306 0-2.034l-0.192-278.072L347.513 465.586c-0.422 0.652-0.959 0.999-1.536 1.535-6.834 6.874-18.162 6.681-25.649-0.806-7.488-7.488-8.025-19.122-1.152-25.995L467.12 292.03c2.112-3.263 5.26-5.913 9.369-7.333 2.074-0.807 4.262-1.152 6.528-1.113 0.23 0 0.383-0.116 0.614-0.116 0.153 0 0.307 0.078 0.46 0.078 2.304-0.078 4.57 0.307 6.72 1.152 3.994 1.421 7.142 4.07 9.254 7.219L648.048 440.32C654.92 447.155 654.383 458.827 646.896 466.315zM636.605 238.121 331.771 238.121c-9.407 0-17.049-7.564-17.049-16.857 0-9.292 7.642-16.856 17.049-16.856l304.835 0c9.445 0 17.048 7.564 17.048 16.856C653.653 230.557 646.013 238.121 636.605 238.121zM549.452 781.829 521.24 781.829c-1.227 0-2.051 0.824-2.453 2.453l0 19.013c0.402 1.639 1.227 2.453 2.453 2.453l28.212 0c1.629-0.402 2.453-1.227 2.453-2.453l0-19.013C551.905 782.653 551.081 781.829 549.452 781.829z"
+            p-id="1360" fill="#343232"></path>
+    </svg>
+</a>
+
+
+    <div class="center_main_contents_title">
+    <h2>目录</h2>
+</div>
+<div class="center_main_contents_main">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#手动部署httpswwwlogicjakexyzwebmonitorinstallid手动部署"><a href="https://www.logicjake.xyz/WebMonitor/#/install?id=%E6%89%8B%E5%8A%A8%E9%83%A8%E7%BD%B2">手动部署</a></a>
+      <ul>
+        <li><a href="#安装httpswwwlogicjakexyzwebmonitorinstallid安装"><a href="https://www.logicjake.xyz/WebMonitor/#/install?id=%E5%AE%89%E8%A3%85">安装</a></a></li>
+      </ul>
+    </li>
+    <li><a href="#docker-部署httpswwwlogicjakexyzwebmonitorinstalliddocker-部署"><a href="https://www.logicjake.xyz/WebMonitor/#/install?id=docker-%E9%83%A8%E7%BD%B2">Docker 部署</a></a>
+      <ul>
+        <li><a href="#安装httpswwwlogicjakexyzwebmonitorinstallid安装-1"><a href="https://www.logicjake.xyz/WebMonitor/#/install?id=%E5%AE%89%E8%A3%85-1">安装</a></a></li>
+      </ul>
+    </li>
+    <li><a href="#设置通知方式httpswwwlogicjakexyzwebmonitorhowid设置通知方式"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%AE%BE%E7%BD%AE%E9%80%9A%E7%9F%A5%E6%96%B9%E5%BC%8F">设置通知方式</a></a>
+      <ul>
+        <li><a href="#设置系统邮箱httpswwwlogicjakexyzwebmonitorhowid设置系统邮箱"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E9%82%AE%E7%AE%B1">设置系统邮箱</a></a></li>
+        <li><a href="#设置-pushover-applicationhttpswwwlogicjakexyzwebmonitorhowid设置-pushover-application"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%AE%BE%E7%BD%AE-pushover-application">设置 Pushover Application</a></a></li>
+        <li><a href="#设置-slackhttpswwwlogicjakexyzwebmonitorhowid设置-slack"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%AE%BE%E7%BD%AE-slack">设置 Slack</a></a></li>
+        <li><a href="#设置-telegram-bothttpswwwlogicjakexyzwebmonitorhowid设置-telegram-bot"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%AE%BE%E7%BD%AE-telegram-bot">设置 Telegram Bot</a></a></li>
+        <li><a href="#设置自定义getpost通知httpswwwlogicjakexyzwebmonitorhowid设置自定义getpost通知"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89getpost%E9%80%9A%E7%9F%A5">设置自定义GET/POST通知</a></a></li>
+      </ul>
+    </li>
+    <li><a href="#添加网页监控任务httpswwwlogicjakexyzwebmonitorhowid添加网页监控任务"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E6%B7%BB%E5%8A%A0%E7%BD%91%E9%A1%B5%E7%9B%91%E6%8E%A7%E4%BB%BB%E5%8A%A1">添加网页监控任务</a></a>
+      <ul>
+        <li><a href="#选择器httpswwwlogicjakexyzwebmonitorhowid选择器"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E9%80%89%E6%8B%A9%E5%99%A8">选择器</a></a></li>
+        <li><a href="#消息体模板httpswwwlogicjakexyzwebmonitorhowid消息体模板"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E6%B6%88%E6%81%AF%E4%BD%93%E6%A8%A1%E6%9D%BF">消息体模板</a></a></li>
+        <li><a href="#是否选择无头浏览器httpswwwlogicjakexyzwebmonitorhowid是否选择无头浏览器"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E6%98%AF%E5%90%A6%E9%80%89%E6%8B%A9%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8">是否选择无头浏览器</a></a></li>
+        <li><a href="#正则表达式httpswwwlogicjakexyzwebmonitorhowid正则表达式"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">正则表达式</a></a></li>
+        <li><a href="#监控规则httpswwwlogicjakexyzwebmonitorhowid监控规则"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E7%9B%91%E6%8E%A7%E8%A7%84%E5%88%99">监控规则</a></a></li>
+        <li><a href="#自定义请求头httpswwwlogicjakexyzwebmonitorhowid自定义请求头"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%B7%E6%B1%82%E5%A4%B4">自定义请求头</a></a></li>
+      </ul>
+    </li>
+    <li><a href="#添加rss监控任务httpswwwlogicjakexyzwebmonitorhowid添加rss监控任务"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E6%B7%BB%E5%8A%A0rss%E7%9B%91%E6%8E%A7%E4%BB%BB%E5%8A%A1">添加RSS监控任务</a></a></li>
+    <li><a href="#任务状态查看httpswwwlogicjakexyzwebmonitorhowid任务状态查看"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81%E6%9F%A5%E7%9C%8B">任务状态查看</a></a></li>
+    <li><a href="#数据导入导出httpswwwlogicjakexyzwebmonitorhowid数据导入导出"><a href="https://www.logicjake.xyz/WebMonitor/#/how?id=%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA">数据导入导出</a></a></li>
+  </ul>
+</nav>
+</div>
+</div>
+
+</div>
+</body>
+
+
+
+
+
+</html>

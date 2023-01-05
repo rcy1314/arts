@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PR，后期知识 on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/pr%E5%90%8E%E6%9C%9F%E7%9F%A5%E8%AF%86/</link>
+    <description>Recent content in PR，后期知识 on NOISE&amp;分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 17 Sep 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/pr%E5%90%8E%E6%9C%9F%E7%9F%A5%E8%AF%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>新版AdobePremierePro2021中如何使用字幕工具及使用声音选项</title>
+      <link>https://rcy1314.github.io/noise/post/%E6%96%B0%E7%89%88adobepremierepro2021%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%AD%97%E5%B9%95%E5%B7%A5%E5%85%B7%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%A3%B0%E9%9F%B3%E9%80%89%E9%A1%B9/</link>
+      <pubDate>Fri, 17 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/%E6%96%B0%E7%89%88adobepremierepro2021%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%AD%97%E5%B9%95%E5%B7%A5%E5%85%B7%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%A3%B0%E9%9F%B3%E9%80%89%E9%A1%B9/</guid>
+      <description>注意：AI智能语音识别字幕功能必须是PR版本大于15.4才有的【文章最后会分享新版破解软件】
+Premiere Pro 中的新增功能
+OK，下面我们开始讲解
+首先，在PR中新建项目，导入一段视频素材（图中这里我从网上找的一段评测视频）和用来做配乐的素材 配乐（背景音） 试播放发现配乐音量大于视频原本的音量，这时我们打开窗口面板，找到基本声音
+选中配乐音轨，预设选择背景音乐，再播放就不会大于原本声音了，同样你也可以用这个来区分对话和音乐
+字幕工具 要使用新版的智能字幕工具，要找到顶部选项面板中的“字幕”面板
+解释：
+转录序列：AI识别字幕
+创建新字幕轨：创建字幕轨道
+从文件导入说明性字幕：导入已有的可识别字幕文件
+创建新字幕轨 跟旧版没太大区别，多了面板选项，点+直接创建字幕
+双击监视窗口也可以进行编辑
+如果需要更改字体具体参数，双击字幕轨道文件即可
+AI识别字幕 找到面板左侧转录文本选项
+选择创建转录
+选择要识别的音轨，在下方第一个选项打√
+值得注意的是，仅订阅用户拥有此项功能，盗版、破解版均会提示网络不良 当然你也可以使用剪映等其它AI识别字幕工具制作字幕，不过新版PR的字幕面板比旧版本好用太多
+更多功能等你自己去尝试： WIN PR 2021 15.4.1.6：
+链接：https://pan.baidu.com/s/1osdTpy19Jpf9aXnseXzJLA 提取码：fs5i</description>
+    </item>
+    
+    <item>
+      <title>在Premiere中如何批量调整字幕样式</title>
+      <link>https://rcy1314.github.io/noise/post/%E5%9C%A8premiere%E4%B8%AD%E5%A6%82%E4%BD%95%E6%89%B9%E9%87%8F%E8%B0%83%E6%95%B4%E5%AD%97%E5%B9%95%E6%A0%B7%E5%BC%8F/</link>
+      <pubDate>Tue, 14 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/%E5%9C%A8premiere%E4%B8%AD%E5%A6%82%E4%BD%95%E6%89%B9%E9%87%8F%E8%B0%83%E6%95%B4%E5%AD%97%E5%B9%95%E6%A0%B7%E5%BC%8F/</guid>
+      <description>在Premiere中如何批量调整字幕样式
+用Premiere CC 2018之前的版本制作字幕，绝对是一种痛不欲生的体验。不论使用标题（Title），还是隐藏式字幕（Captions）工具，均无法对字体、描边、阴影等样式信息批量调整。当客户Daddy提出文字样式的调整建议时，只能对字幕条逐个修改，效率异常低下，对于制作人员来说必然是一场灾难。
+幸运的是，Premiere CC 2018增加了一种新的文字工具，可实现文字样式的批量调整。让众多用户重新燃起了对Pr的希望。
+新增的文字工具
+Premiere CC 2018新增了图形功能，在基本图形面板中可制作字幕，以及批量调整文字样式。为了与Premiere中其他文字工具区分，我暂且把这种文字工具称为图形文字工具吧。
+使用“图形”制作字幕
+① 选择文字工具
+单击工具栏的T形图标，选择文字工具。如下图所示。
+② 输入文字
+使用文字工具，在时间线预览窗口上单击输入文字。这时，时间线上会自动生成一个字幕片段。文字内容会显示在字幕片段中，非常实用。如下图所示。
+③ 调整文字样式
+执行命令：Pr顶部菜单栏窗口→基本图形，调出基本图形面板。在该面板中选择编辑模块，调整字号、字体、颜色、描边等样式。如下图所示。 ④ 复制字幕片段
+按住Option(Alt) 拖动字幕，以复制字幕片段至下一字幕处。用文字工具在时间线预览窗口中全选文字，然后输入新的文字。该步骤如此重复，直至字幕制作完毕。
+**注意：**与标题（Title）不同，以图形工具创建的字幕片段，仅在时间线上存在，不存在于项目窗口中。
+批量调整字幕样式
+当我们刚制作完成字幕，这时客户Daddy说：
+“字体要换！”
+“字号要换！”
+“颜色要换！”
+“换!&amp;hellip;换!!&amp;hellip;换!!!!&amp;hellip;”
+“&amp;hellip;&amp;hellip;”
+如果在以前，我绝对是欲哭无泪。但现在我可以从容地回答Daddy：“包您满意！”
+① 创建文本样式
+选择一个字幕片段，修改文字样式。待新的文字样式调整完毕后，在基本图形的主样式菜单中，选择“创建主文本样式”，在弹出的菜单中为样式命名，单击“确定”关闭窗口。这时，文字样式被储存至项目窗口中。如下图所示。
+② 批量调整字幕样式
+在时间线上全选所有字幕片段，将项目窗口中的文字样式拖至字幕片段上，所有字幕的样式随即更改。BINGO! 5秒搞定！
+在Arctime中输出图形字幕时间线
+较长片子的字幕制作，还是用专业的字幕软件更方便，比如Arctime。图形文字工具既然这么方便，那Arctime能否输出适用于Premiere的图形字幕文件呢？答案是令人欣喜的。执行命令：导出→到Premiere Pro→XML原生字幕序列，如下图所示。
+在弹出的窗口中设置好路径，序列名称等属性，单击“开始”就可以输出图形字幕XML了。
+**说明：**窗口中“该功能仅适用于PR CC 2017及更高版本”的说法稍有错误，Premiere CC 2017中没有图形工具，所以“XML原生字幕序列”适用于PR CC 2018及以上版本。
+Arctime的“面向非编软件的软字幕输出”功能售价360元，可实现与市面上主流剪辑软件的字幕对接。
+总结
+本文介绍了Premiere CC 2018图形文字工具的运用。运用图形文字工具制作字幕非常方便。考虑到初学者，我尽量将方法详细说明。本篇推文特别感谢周之凯的协助。
+本文使用操作系统：
+macOS Mojave 10.14.4
+本文使用软件：
+Adobe Premiere CC 2018
+Arctime Pro 2.2.1
+以上。</description>
+    </item>
+    
+  </channel>
+</rss>

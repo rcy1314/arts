@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>反向代理 on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</link>
+    <description>Recent content in 反向代理 on NOISE&amp;分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Sep 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nginx通过反向代理实现未备案域名访问</title>
+      <link>https://rcy1314.github.io/noise/post/nginx%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E6%9C%AA%E5%A4%87%E6%A1%88%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE/</link>
+      <pubDate>Thu, 09 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/nginx%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E6%9C%AA%E5%A4%87%E6%A1%88%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE/</guid>
+      <description>本方法实现前提是8123端口（也可以是其他端口）面对互联网打开。server里面监听80端口，然后反向代理8123端口。1.其中server_name部分是我的域名可以替换成其他想要的域名2.8123是我指定的端口可以改成其他端口，最后访问http://你的域名.com 浏览器直接跳转成http://你的域名:81233.
+本机8123端口业务一定要先配置通。下面给出server部分代码。
+server { listen 80; server_name www.你的域名 你的域名.cn; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; access_log off; location / { proxy_pass &amp;lt;http://localhost:8123&amp;gt;; } } </description>
+    </item>
+    
+  </channel>
+</rss>

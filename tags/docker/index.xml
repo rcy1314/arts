@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/docker/</link>
+    <description>Recent content in Docker on NOISE&amp;分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Sep 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>免费Docker可视化图形化管理面板</title>
+      <link>https://rcy1314.github.io/noise/post/%E5%85%8D%E8%B4%B9docker%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BF/</link>
+      <pubDate>Wed, 15 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/%E5%85%8D%E8%B4%B9docker%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BF/</guid>
+      <description>Portainer 算是知名度比较高的一款容器管理平台了。
+官网：https://www.portainer.io/
+汉化：https://www.quchao.net/Portainer-CN.html
+演示： http://demo.portainer.io/
+用户名: admin
+密码: tryportainer
+Rancher 支持 k8s/ks3 据说功能强大，也重量级，支持中文
+官网： https://www.rancher.cn/
+DockStation 一款桌面应用程序；支持Linux、Mac、Windows操作系统！
+官网：https://dockstation.io/
+Cockpit 主要管理Linux 主机 顺便 管理docker
+地址：https://cockpit-project.org/
+Kitematic 在Mac 和 Windows上简单易用的管理容器！
+官网：https://kitematic.com/
+EasyDockerWeb 某大佬整的一个简单管理Docker容器的面板！记住是简单！
+地址：https://github.com/qfdk/EasyDockerWeb
+Fast Os Docker Docker的图形化管理工具，基本能满足中小型单位对容器管理的需求。
+地址：https://hub.docker.com/r/wangbinxingkong/fast
+Crane Crane是基于swarmkit的容器管理平台！已经开源！
+地址：https://michaelsauter.github.io/crane/</description>
+    </item>
+    
+    <item>
+      <title>docker基本命令</title>
+      <link>https://rcy1314.github.io/noise/post/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sat, 11 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</guid>
+      <description>docker基本命令 基本命令 下载镜像 # 以redis为例子 docker pull redis 运行镜像 docker run \\ -d \\ # 后台运行 --name redis6 \\ # 自定义名字 -p 6379:6379 \\ # 端口映射 redis # 镜像名称 docker run -d --name redis6 -p 6379:6379 redis redis-server --appendonly yes --requirepass &amp;#34;123456&amp;#34; # 完整命令 进入容器 第一种
+docker exec -it 容器id /bin/bash 第二种(不推荐，当退出容器使用exit命令时，会停止这个容器)
+docker attach 容器id 暂停容器 docker stop 容器id 启动容器 docker start 容器id 查询容器列表 docker ps -a # 查看所有容器 docker ps # 查看运行中的容器 run和start的区别：</description>
+    </item>
+    
+    <item>
+      <title>Docker安装宝塔面板教程</title>
+      <link>https://rcy1314.github.io/noise/post/docker%E5%AE%89%E8%A3%85%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Wed, 08 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/docker%E5%AE%89%E8%A3%85%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E6%95%99%E7%A8%8B/</guid>
+      <description>宝塔界面建站非常方便，但是没有官方的docker版，pch18大神移植到docker了，正好可以用在unraid上面，不过有一些坑需要注意，下面试安装步骤
+1.首先docker设置里先启用主机访问自定义网络和保留用户定义的网络
+2.打开 unRAID 的 Docker 页面，并选择添加容器
+3.填写配置容器参数
+版本命名说明（根据自己的需求替换镜像地址）
+pch18/baota或pch18/baota:latest 等同pch18/baota:lnmp pch18/baota:lnmp 为最新版本的官方纯净安装的基础上安装nginx,mysql,php pch18/baota:lnp 为官方版本纯净安装的基础上安装nginx,php(不内置mysql,用于外置数据库的环境) pch18/baota:lamp 为官方版本纯净安装的基础上安装apache,php pch18/baota:lap 为官方版本纯净安装的基础上安装apache,php(不内置mysql,用于外置数据库的环境) pch18/baota:clear 为官方版本纯净安装, 不默认安装nginx,mysql,php等程序 4.映射路径
+第一个路径首次配置，容器路径不要直接指定www，换成别的，比如我的other,后面再改回来
+5.设置好后，点击 APPLY，这里会根据你选择的镜像，自动进行下载
+安装成功后，打开浏览器输入上面设置的ip再带上端口号8888就可以访问了，比如我的：192.168.1.25:8888默认的用户名是：username ，默认密码是：password
+但是，这里还没彻底完成，因为到这里，虽然能进行正常运行了，但是比如你添加了一些软件或者做了宝塔面板的升级，然后你去重新编辑该 Docker，它是不会保存这些设置的，我们还需要进行一些操作。
+6.登入进去后点击宝塔面板左侧的文件，在右侧的路径，选择 根目录-www，然后选定除去 wwwroot 文件夹以外的所有文件夹，点击右上角的复制
+然后选择根目录 - other 文件夹，右上角点击 粘贴所有，最终结果如图
+5、接下来，我们重新编辑下 宝塔 Docker的配置，只需要修改文件夹路径即可
+修改完成，点击 APPLY 保存，到此，宝塔已经可以完整正常使用了，并且每次做了宝塔内的升级、安装等操作后，配置都会进行保存。
+其他优化设置
+1.这里你折腾了几次，宝塔面板的机制是每一次都会在docker 的img文件里面 新建一个卷 volume每次 大概4G 容量，而docker映像默认是20G，如果你没有修改的话。
+所以这里我们需要删除无用的卷。调用unraid的终端 ，命令如下
+docker volume prune
+回车之后输入y 确认删除
+2.宝塔面板的webui链接设置，高级选项在webui项填入值：
+http://[IP]:[PORT:8888]
+3.图标美化修改
+设置上图中Icon URL地址即可
+最后列出本项目的源地址
+github issue传送门: https://github.com/pch18-docker/baotadockerHub传送门: https://hub.docker.com/r/pch18/baota/作者主页传送门: https://pch18.cn/archives/docker-baota.html</description>
+    </item>
+    
+  </channel>
+</rss>

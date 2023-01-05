@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flarum论坛 on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/flarum%E8%AE%BA%E5%9D%9B/</link>
+    <description>Recent content in Flarum论坛 on NOISE&amp;分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 16 Sep 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/flarum%E8%AE%BA%E5%9D%9B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>宝塔面板安装Flarum论坛</title>
+      <link>https://rcy1314.github.io/noise/post/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85flarum%E8%AE%BA%E5%9D%9B/</link>
+      <pubDate>Thu, 16 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85flarum%E8%AE%BA%E5%9D%9B/</guid>
+      <description>Flarum是一款新式的论坛，虽然还处于不太稳定的测试版，但是它非常好看，这就够了
+一些链接：官方手册(英语) | 官方论坛(英语) | 中文论坛
+本文使用的是Flarum 0.1.0-beta.12
+官方不建议将Flarum用于生产环境，测试版软件有潜在的不稳定风险。
+安装步骤 环境要求 PHP版本 &amp;gt;= 7.2
+部分插件不支持7.4，推荐使用7.3或者7.2记得解禁putenv函数
+内存 &amp;gt;= 2G
+论坛和插件使用composer进行安装，内存不够的话composer进程会被杀死。如果物理内存不够的话可以加2G虚拟内存。
+宝塔面板新建站点 创建完以后先把防跨站关了：
+然后去网站目录删除index.html 404.html .htaccess这几个文件。
+命令行安装 登陆SSH，切换到网站目录
+#首先要确保目录是空的 ls -la #使用composer安装 composer create-project flarum/flarum . --stability=beta 如果出现红框说明环境有问题：
+安装目录非空：
+putenv函数被禁用：
+显示killed或者已杀死：系统内存不够，使用free -h查看所有内存，确保可用内存在2G以上，不够的话加点虚拟内存。
+检查是否安装成功 #更改文件所有者 chown www:www . -R #查看文件列表 ls -la 如果安装没有问题，文件结构应该跟图中类似
+网站目录设置 打开防跨站保护，把运行目录改成/public
+Nginx伪静态设置，Apache无需配置 设置成下面的内容
+location / { try_files $uri $uri/ /index.php?$query_string; } 访问网站完成安装 表前缀可为空
+安装完成 后续配置 配置文件说明 配置文件叫config.php：
+&amp;lt;?php return array ( &amp;#39;debug&amp;#39; =&amp;gt; false, /*调试模式开关*/ &amp;#39;database&amp;#39; =&amp;gt; array ( &amp;#39;driver&amp;#39; =&amp;gt; &amp;#39;mysql&amp;#39;, &amp;#39;host&amp;#39; =&amp;gt; &amp;#39;localhost&amp;#39;, &amp;#39;port&amp;#39; =&amp;gt; 3306, &amp;#39;database&amp;#39; =&amp;gt; &amp;#39;数据库名&amp;#39;, &amp;#39;username&amp;#39; =&amp;gt; &amp;#39;数据库用户名&amp;#39;, &amp;#39;password&amp;#39; =&amp;gt; &amp;#39;数据库密码&amp;#39;, &amp;#39;charset&amp;#39; =&amp;gt; &amp;#39;utf8mb4&amp;#39;, &amp;#39;collation&amp;#39; =&amp;gt; &amp;#39;utf8mb4_unicode_ci&amp;#39;, &amp;#39;prefix&amp;#39; =&amp;gt; &amp;#39;&amp;#39;, &amp;#39;strict&amp;#39; =&amp;gt; false, &amp;#39;engine&amp;#39; =&amp;gt; &amp;#39;InnoDB&amp;#39;, &amp;#39;prefix_indexes&amp;#39; =&amp;gt; true, ), &amp;#39;url&amp;#39; =&amp;gt; &amp;#39;&amp;lt;https://chrxw.</description>
+    </item>
+    
+  </channel>
+</rss>

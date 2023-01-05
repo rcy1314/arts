@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>网页监控 on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/%E7%BD%91%E9%A1%B5%E7%9B%91%E6%8E%A7/</link>
+    <description>Recent content in 网页监控 on NOISE&amp;分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 04 Sep 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/%E7%BD%91%E9%A1%B5%E7%9B%91%E6%8E%A7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>实现网页监控的几个项目</title>
+      <link>https://rcy1314.github.io/noise/post/%E5%AE%9E%E7%8E%B0%E7%BD%91%E9%A1%B5%E7%9B%91%E6%8E%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E9%A1%B9%E7%9B%AE/</link>
+      <pubDate>Sat, 04 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/%E5%AE%9E%E7%8E%B0%E7%BD%91%E9%A1%B5%E7%9B%91%E6%8E%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E9%A1%B9%E7%9B%AE/</guid>
+      <description>网页监控
+GitHub - LogicJake/WebMonitor: 实时监控网页变化，并发送通知（Monitor web page changes in real time and send notifications）
+I Am Watching You
+GitHub - jiangbianwanghai/ping: 这是一个网页状态监控项目
+GitHub - melancn/Watching: 网页监控
+GitHub - py-wuhao/monitor: 监控网页变化，邮件通知
+GitHub - shifeng-xu/monitorurl: 一个简单的web静态网页监控脚本
+GitHub - assdaws/HitNews: 持续跟踪监控目标网页某标签信息，获取信息后及时给予QQ消息及邮件通知
+网页监控浏览器扩展.zip
+GitHub - liyumeng/PageWatcher: 一款能够监控网页内容改变，并发出提醒的软件。可以用于抢课，抢票，秒杀等等。
+Distill Web Monitor
+Microsoft Edge Addons</description>
+    </item>
+    
+  </channel>
+</rss>

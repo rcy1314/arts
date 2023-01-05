@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>博客搭建 on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+    <description>Recent content in 博客搭建 on NOISE&amp;分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 16 Sep 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HEXO零代码快速搭建</title>
+      <link>https://rcy1314.github.io/noise/post/hexo%E9%9B%B6%E4%BB%A3%E7%A0%81%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Thu, 16 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/hexo%E9%9B%B6%E4%BB%A3%E7%A0%81%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA/</guid>
+      <description>HEXO是一套快速、简洁且高效的博客框架，官方包括网上已有各种搭建教程，这里仅介绍我的博客站搭建过程，中间不需要输入任何代码。
+前提 你需要有一个Github账户，需要用这个账户登录Vercel，实现连通。
+第一步 用github账户登录Vercel官网
+第二步 新建模版文件
+导入官方已准备好的模版库
+选择HEXO模版
+导入同步到自己的Git仓库，名字新建即可
+第三步 转到刚刚新建的仓库，更改管理访问权限，如果想仓库一直是私有的，则需要建立SSH公匙（公共的不需要）
+第四步 这时Vercel已经构建好Hexo并提供了一个永久域名，
+我们还可以到Vercel的HEXO仓库下添加一个属于自己的解析域名
+最后 到Github官方下载客户端或使用其他GIT工具，把github下Hexo仓库git到本地，这时你已经可以新建md文章及下载其他主题更改博客站配置了。
+下图为我用的的fluid主题</description>
+    </item>
+    
+  </channel>
+</rss>

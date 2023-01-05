@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>微擎小程序 on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/%E5%BE%AE%E6%93%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
+    <description>Recent content in 微擎小程序 on NOISE&amp;分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Sep 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/%E5%BE%AE%E6%93%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>微擎小程序通用搭建教程</title>
+      <link>https://rcy1314.github.io/noise/post/%E5%BE%AE%E6%93%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E7%94%A8%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Tue, 14 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/%E5%BE%AE%E6%93%8E%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E7%94%A8%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <description>微擎小程序配置其实很简单，只需要将源码上传到服务端，填好参数，就可以完成简单配置。
+后端安装需要先安装微擎框架后按下面教程操作。
+微擎框架下载
+1、这里以精美企业官网小程序为例，教大家如何配置微擎小程序。
+2、将精美企业官网小程序后端源码yyf_company打包上传至微擎框架的addons目录下，并解压。
+3、登陆微擎平台安装好小程序。
+4、添加平台，新建微信小程序，并配置好对应的小程序信息，如AppId，AppSecret，这些需要登陆微信小程序平台获取。
+5 、设置管理员，添加小程序应用，设置版本信息，基本上后台操作就结束了。
+6 、配置服务器域名，点开管理设置，可以看到需要配置的服务器信息，登陆微信小程序平台，打开开发》开发设置，同样填上服务器配置信息。
+7 、使用微信WEB开发者工具进行调试，如果你没安装，请到https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html下载安装即可，
+打开开发工具，导入精美企业官网小程序前端文件夹wxapp，配置好AppID（需要自己注册申请），尽可能使用英文目录，我这里做演示使用了中文。
+8、修改配置siteinfo.js文件，正常情况下微擎小程序前端文件的根目录都会有siteinfo.js文件
+siteroot：替换成你的微擎域名即可
+uniacid/acid：查看新建的小程序在微擎对应的程序ID，在URL地址栏就可以看到
+9、到此微擎小程序教程配置已完成，最后只需要测试功能是不是正常，在微擎后台设置模板或其它信息，刷新小程序界面，比如我换了个模板。</description>
+    </item>
+    
+  </channel>
+</rss>

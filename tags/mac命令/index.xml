@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mac命令 on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/mac%E5%91%BD%E4%BB%A4/</link>
+    <description>Recent content in Mac命令 on NOISE&amp;分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Sep 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/mac%E5%91%BD%E4%BB%A4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac 常用命令集合</title>
+      <link>https://rcy1314.github.io/noise/post/mac-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</link>
+      <pubDate>Wed, 15 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://rcy1314.github.io/noise/post/mac-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</guid>
+      <description>开始 记住命令多用 Tab 键，命令自动补齐，提高开发效率！ 由于 Mac OS 是基于 Unix 的内核，所以与各种 Linux 系统命令大同小异。
+su
+一般使用sudo su，切换root管理员身份 $ sudo su
+同样是切换用户，su - 用户，切换指定用户身份 $ su - root clear
+没啥好说的，清屏命令 $ clear mkdir &amp;amp; touch
+创建目录 $ mkdir 目录名
+创建文件 $ touch 文件 微拓展
+创建多级目录 $ mkdir -p 目录/目录/&amp;hellip; 删除
+删除目录下所有的文件及目录 r 表示递归，f表示强制删除 $ rm -rf 目录/*
+删除目录下以.java结尾的文件 $ rm -rf 目录/*.java
+强制删除目录及目录下所有的文件及目录 $ rm -rf 目录 cd
+进入某个目录 $ cd 目录
+返回上一级目录 $ cd .</description>
+    </item>
+    
+  </channel>
+</rss>
