@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>My Note on NOISE</title>
-    <link>https://rcy1314.github.io/myblog/note/</link>
+    <link>https://rcy1314.github.io/arts/note/</link>
     <description>Recent content in My Note on NOISE</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 02 Sep 2022 10:22:14 +0800</lastBuildDate><atom:link href="https://rcy1314.github.io/myblog/note/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Sep 2022 10:22:14 +0800</lastBuildDate><atom:link href="https://rcy1314.github.io/arts/note/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2022-09-02</title>
-      <link>https://rcy1314.github.io/myblog/note/note2/</link>
+      <link>https://rcy1314.github.io/arts/note/note2/</link>
       <pubDate>Fri, 02 Sep 2022 10:22:14 +0800</pubDate>
       
-      <guid>https://rcy1314.github.io/myblog/note/note2/</guid>
+      <guid>https://rcy1314.github.io/arts/note/note2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>2022-09-01</title>
-      <link>https://rcy1314.github.io/myblog/note/note1/</link>
+      <link>https://rcy1314.github.io/arts/note/note1/</link>
       <pubDate>Thu, 01 Sep 2022 10:21:27 +0800</pubDate>
       
-      <guid>https://rcy1314.github.io/myblog/note/note1/</guid>
+      <guid>https://rcy1314.github.io/arts/note/note1/</guid>
       <description>Note</description>
     </item>
     

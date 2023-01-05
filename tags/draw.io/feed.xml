@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>draw.io on NOISE</title>
-    <link>https://rcy1314.github.io/myblog/tags/draw.io/</link>
+    <link>https://rcy1314.github.io/arts/tags/draw.io/</link>
     <description>Recent content in draw.io on NOISE</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Sep 2022 21:30:26 +0800</lastBuildDate><atom:link href="https://rcy1314.github.io/myblog/tags/draw.io/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Sep 2022 21:30:26 +0800</lastBuildDate><atom:link href="https://rcy1314.github.io/arts/tags/draw.io/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>三款好用的繪圖工具來解決系統架構或流程圖</title>
-      <link>https://rcy1314.github.io/myblog/posts/three-tools-design-system-architecture-and-flow/</link>
+      <link>https://rcy1314.github.io/arts/posts/three-tools-design-system-architecture-and-flow/</link>
       <pubDate>Sat, 17 Sep 2022 21:30:26 +0800</pubDate>
       
-      <guid>https://rcy1314.github.io/myblog/posts/three-tools-design-system-architecture-and-flow/</guid>
+      <guid>https://rcy1314.github.io/arts/posts/three-tools-design-system-architecture-and-flow/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/0sA0St5.png&#34; alt=&#34;drwaio 01&#34;&gt;&lt;/p&gt;
 &lt;p&gt;不管是長官還是同事甚至下屬，在公司無時無刻都需要跨團隊進行溝通，當系統架構或流程越來越複雜的時候，如果沒有按照當下情況記錄下來，對於未來接手的同事，或者是自己都會不小心忘記，而在記憶最清楚的當下用文字或流程圖記錄下來，對團隊及自己是有相當大的幫助。而有沒有工具可以快速畫出系統架構或流程圖？我們可以分幾種情境來討論。&lt;/p&gt;</description>
     </item>

@@ -2,142 +2,142 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://rcy1314.github.io/myblog/categories/</loc>
+    <loc>https://rcy1314.github.io/arts/categories/</loc>
     <lastmod>2023-01-02T08:32:31+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/categories/golang/</loc>
+    <loc>https://rcy1314.github.io/arts/categories/golang/</loc>
     <lastmod>2023-01-02T08:32:31+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/</loc>
+    <loc>https://rcy1314.github.io/arts/</loc>
     <lastmod>2023-01-02T08:32:31+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/posts/</loc>
+    <loc>https://rcy1314.github.io/arts/posts/</loc>
     <lastmod>2023-01-02T08:32:31+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/categories/system-design/</loc>
+    <loc>https://rcy1314.github.io/arts/categories/system-design/</loc>
     <lastmod>2023-01-02T08:32:31+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/posts/create-server-and-worker-for-cancel-task-in-golang/</loc>
+    <loc>https://rcy1314.github.io/arts/posts/create-server-and-worker-for-cancel-task-in-golang/</loc>
     <lastmod>2023-01-02T08:32:31+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/posts/system-design-how-to-cancel-a-running-task-in-golang/</loc>
+    <loc>https://rcy1314.github.io/arts/posts/system-design-how-to-cancel-a-running-task-in-golang/</loc>
     <lastmod>2022-12-23T08:32:31+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/posts/simple-scheduler-with-multiple-worker-using-golang/</loc>
+    <loc>https://rcy1314.github.io/arts/posts/simple-scheduler-with-multiple-worker-using-golang/</loc>
     <lastmod>2022-11-13T08:23:09+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/tags/diagrams/</loc>
+    <loc>https://rcy1314.github.io/arts/tags/diagrams/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/tags/draw.io/</loc>
+    <loc>https://rcy1314.github.io/arts/tags/draw.io/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/tags/excalidraw/</loc>
+    <loc>https://rcy1314.github.io/arts/tags/excalidraw/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/tags/plantuml/</loc>
+    <loc>https://rcy1314.github.io/arts/tags/plantuml/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/tags/</loc>
+    <loc>https://rcy1314.github.io/arts/tags/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/tags/vscode/</loc>
+    <loc>https://rcy1314.github.io/arts/tags/vscode/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/posts/three-tools-design-system-architecture-and-flow/</loc>
+    <loc>https://rcy1314.github.io/arts/posts/three-tools-design-system-architecture-and-flow/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/tags/dependency-injection/</loc>
+    <loc>https://rcy1314.github.io/arts/tags/dependency-injection/</loc>
     <lastmod>2022-09-10T13:17:01+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/tags/golang/</loc>
+    <loc>https://rcy1314.github.io/arts/tags/golang/</loc>
     <lastmod>2022-09-10T13:17:01+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/posts/dependency-injection-in-go/</loc>
+    <loc>https://rcy1314.github.io/arts/posts/dependency-injection-in-go/</loc>
     <lastmod>2022-09-10T13:17:01+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/note/note2/</loc>
+    <loc>https://rcy1314.github.io/arts/note/note2/</loc>
     <lastmod>2022-09-02T10:22:14+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/note/</loc>
+    <loc>https://rcy1314.github.io/arts/note/</loc>
     <lastmod>2022-09-02T10:22:14+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/note/note1/</loc>
+    <loc>https://rcy1314.github.io/arts/note/note1/</loc>
     <lastmod>2022-09-01T10:21:27+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/post/</loc>
+    <loc>https://rcy1314.github.io/arts/post/</loc>
     <lastmod>2022-09-01T10:17:19+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/projects/project1/</loc>
+    <loc>https://rcy1314.github.io/arts/projects/project1/</loc>
     <lastmod>2022-09-01T10:17:19+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/projects/project2/</loc>
+    <loc>https://rcy1314.github.io/arts/projects/project2/</loc>
     <lastmod>2022-09-01T10:17:19+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/projects/</loc>
+    <loc>https://rcy1314.github.io/arts/projects/</loc>
     <lastmod>2022-09-01T10:17:19+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/post/post1/</loc>
+    <loc>https://rcy1314.github.io/arts/post/post1/</loc>
     <lastmod>2022-09-01T10:17:19+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/about/</loc>
+    <loc>https://rcy1314.github.io/arts/about/</loc>
     <lastmod>2006-06-22T13:08:07+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/myblog/archives/</loc>
+    <loc>https://rcy1314.github.io/arts/archives/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

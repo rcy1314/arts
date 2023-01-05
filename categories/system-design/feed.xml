@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>System Design on NOISE</title>
-    <link>https://rcy1314.github.io/myblog/categories/system-design/</link>
+    <link>https://rcy1314.github.io/arts/categories/system-design/</link>
     <description>Recent content in System Design on NOISE</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Jan 2023 08:32:31 +0800</lastBuildDate><atom:link href="https://rcy1314.github.io/myblog/categories/system-design/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Jan 2023 08:32:31 +0800</lastBuildDate><atom:link href="https://rcy1314.github.io/arts/categories/system-design/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>用 Go 語言建立 Web 及 Worker 服務實現取消任務 (二)</title>
-      <link>https://rcy1314.github.io/myblog/posts/create-server-and-worker-for-cancel-task-in-golang/</link>
+      <link>https://rcy1314.github.io/arts/posts/create-server-and-worker-for-cancel-task-in-golang/</link>
       <pubDate>Mon, 02 Jan 2023 08:32:31 +0800</pubDate>
       
-      <guid>https://rcy1314.github.io/myblog/posts/create-server-and-worker-for-cancel-task-in-golang/</guid>
+      <guid>https://rcy1314.github.io/arts/posts/create-server-and-worker-for-cancel-task-in-golang/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/a5rYLFr.png&#34; alt=&#34;cancel a task&#34;&gt;&lt;/p&gt;
 &lt;p&gt;上一篇『&lt;a href=&#34;https://blog.wu-boy.com/2022/12/system-design-how-to-cancel-a-running-task-in-golang/&#34;&gt;系統設計: 如何取消正在執行的工作任務 (一)&lt;/a&gt;』教大家如何用 &lt;a href=&#34;https://go.dev&#34;&gt;Go 語言&lt;/a&gt;實現 &lt;code&gt;canceler&lt;/code&gt; package 來紀錄及取消正在執行的任務。而本篇來實現上圖的 &lt;code&gt;HTTP Server&lt;/code&gt; 及 &lt;code&gt;Worker&lt;/code&gt; 程式碼，底下直接用 Gin 框架來快速實現 HTTP 兩個 Handle，分別是 &lt;code&gt;Cancel Task&lt;/code&gt; 及 &lt;code&gt;Ｗatch Task&lt;/code&gt; (如下圖標示的 1 跟 2)。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://i.imgur.com/dquTd65.png&#34; alt=&#34;cancel a task&#34;&gt;&lt;/p&gt;
@@ -21,20 +21,20 @@
     
     <item>
       <title>用 Go 語言實作如何取消正在執行的工作任務 (一)</title>
-      <link>https://rcy1314.github.io/myblog/posts/system-design-how-to-cancel-a-running-task-in-golang/</link>
+      <link>https://rcy1314.github.io/arts/posts/system-design-how-to-cancel-a-running-task-in-golang/</link>
       <pubDate>Fri, 23 Dec 2022 08:32:31 +0800</pubDate>
       
-      <guid>https://rcy1314.github.io/myblog/posts/system-design-how-to-cancel-a-running-task-in-golang/</guid>
+      <guid>https://rcy1314.github.io/arts/posts/system-design-how-to-cancel-a-running-task-in-golang/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/VZyfv0M.png&#34; alt=&#34;cancel a task&#34;&gt;&lt;/p&gt;
 &lt;p&gt;本篇來聊聊『如何取消正在執行的工作任務』，當系統內有需要處理比較久或較多資源的任務，肯定會將這些任務丟到其他機器再執行，執行過程如果需要取消，會經過如上圖幾個步驟。先假設中間的過程不透過 Message Queue 機制，而是兩個服務進行溝通透過 &lt;a href=&#34;https://aws.amazon.com/tw/what-is/restful-api/&#34;&gt;RESTful&lt;/a&gt; 或 &lt;a href=&#34;https://grpc.io/&#34;&gt;gRPC&lt;/a&gt; 方式。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>系統設計: 處理服務讀取多個任務遇到的問題 (Go 語言)</title>
-      <link>https://rcy1314.github.io/myblog/posts/simple-scheduler-with-multiple-worker-using-golang/</link>
+      <link>https://rcy1314.github.io/arts/posts/simple-scheduler-with-multiple-worker-using-golang/</link>
       <pubDate>Sun, 13 Nov 2022 08:23:09 +0800</pubDate>
       
-      <guid>https://rcy1314.github.io/myblog/posts/simple-scheduler-with-multiple-worker-using-golang/</guid>
+      <guid>https://rcy1314.github.io/arts/posts/simple-scheduler-with-multiple-worker-using-golang/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/lbY6KzL.png&#34; alt=&#34;system design 02&#34;&gt;&lt;/p&gt;
 &lt;p&gt;不同的服務都會有需要處理比較久的任務，這些任務是不能即時執行完成，才回應給前端，這樣使用者體驗會非常的差。將類型的任務存在資料庫或放在&lt;a href=&#34;https://zh.m.wikipedia.org/zh-hant/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97&#34;&gt;消息對列&lt;/a&gt;就是一種處理方式，接著啟動另一個服務來消化非即時性的任務，而常見的處理方式就是在服務內啟動多個 Worker Node 來平行消化任務 (如上圖)。&lt;/p&gt;</description>
     </item>
