@@ -26,30 +26,4 @@ params:
   prefix:
     h2: "※ "
     h3: "✧ "
-menu:
-  navs:
-    - name: Blog
-      params:
-        img: /img/logo.png
-      url: /blog/
-      weight: 1
-    - name: Note
-      params:
-        img: /img/logo.png
-      weight: 2
-      url: /note/
-    - name: Projects
-      params:
-        img: /img/logo.png
-      url: /projects/
-      weight: 2
-    - name: About
-      params:
-        img: /img/logo.png
-      url: /about
-      weight: 3
-    - name: 404
-      params:
-        img: /img/logo3.png
-      url: /404.html
-      weight: 4
+
