@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dependency injection on NOISE</title>
-    <link>https://rcy1314.github.io/arts/tags/dependency-injection/</link>
-    <description>Recent content in dependency injection on NOISE</description>
+    <title>golang on NOISE&amp;分享</title>
+    <link>https://rcy1314.github.io/noise/tags/golang/</link>
+    <description>Recent content in golang on NOISE&amp;分享</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Sep 2022 13:17:01 +0800</lastBuildDate><atom:link href="https://rcy1314.github.io/arts/tags/dependency-injection/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Sep 2022 13:17:01 +0800</lastBuildDate><atom:link href="https://rcy1314.github.io/noise/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>用 Google 團隊推出的 Wire 工具解決 Dependency Injection</title>
-      <link>https://rcy1314.github.io/arts/posts/dependency-injection-in-go/</link>
+      <link>https://rcy1314.github.io/noise/posts/dependency-injection-in-go/</link>
       <pubDate>Sat, 10 Sep 2022 13:17:01 +0800</pubDate>
       
-      <guid>https://rcy1314.github.io/arts/posts/dependency-injection-in-go/</guid>
+      <guid>https://rcy1314.github.io/noise/posts/dependency-injection-in-go/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/DZOA6zy.png&#34; alt=&#34;proposal&#34;&gt;&lt;/p&gt;
 &lt;p&gt;不知道大家在用 &lt;a href=&#34;https://go.dev&#34;&gt;Go 語言&lt;/a&gt;寫服務的時候，會不會遇到 Components 會有相互依賴的關係，A 物件依賴 B 物件，B 物件又依賴 C 物件，所以在初始化 A 物件前，就必須先將 B 跟 C 初始化完成，這就是錯綜復雜的關係。也許大家會想到另一個做法，就是把每個物件都宣告成&lt;strong&gt;全域變數&lt;/strong&gt;，我個人不推薦這個使用方式，雖然很方便，但是就會讓整體架構變得很複雜。而本篇要介紹一個救星工具，就是 Google 團隊開發的 &lt;a href=&#34;https://github.com/google/wire&#34;&gt;Wire&lt;/a&gt; 工具，官方部落格也可以&lt;a href=&#34;https://blog.golang.org/wire&#34;&gt;參考看看&lt;/a&gt;。此工具就是為了解決底下兩個問題 (&lt;a href=&#34;https://en.wikipedia.org/wiki/Dependency_injection&#34;&gt;dependency injection&lt;/a&gt;)。&lt;/p&gt;
 &lt;ol&gt;

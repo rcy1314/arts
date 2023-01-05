@@ -2,143 +2,87 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://rcy1314.github.io/arts/categories/</loc>
+    <loc>https://rcy1314.github.io/noise/categories/</loc>
     <lastmod>2023-01-02T08:32:31+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/categories/golang/</loc>
+    <loc>https://rcy1314.github.io/noise/categories/golang/</loc>
     <lastmod>2023-01-02T08:32:31+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/</loc>
+    <loc>https://rcy1314.github.io/noise/</loc>
     <lastmod>2023-01-02T08:32:31+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/posts/</loc>
+    <loc>https://rcy1314.github.io/noise/posts/</loc>
     <lastmod>2023-01-02T08:32:31+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/categories/system-design/</loc>
+    <loc>https://rcy1314.github.io/noise/categories/system-design/</loc>
     <lastmod>2023-01-02T08:32:31+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/posts/create-server-and-worker-for-cancel-task-in-golang/</loc>
+    <loc>https://rcy1314.github.io/noise/posts/create-server-and-worker-for-cancel-task-in-golang/</loc>
     <lastmod>2023-01-02T08:32:31+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/posts/system-design-how-to-cancel-a-running-task-in-golang/</loc>
+    <loc>https://rcy1314.github.io/noise/posts/system-design-how-to-cancel-a-running-task-in-golang/</loc>
     <lastmod>2022-12-23T08:32:31+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/posts/simple-scheduler-with-multiple-worker-using-golang/</loc>
+    <loc>https://rcy1314.github.io/noise/posts/simple-scheduler-with-multiple-worker-using-golang/</loc>
     <lastmod>2022-11-13T08:23:09+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/tags/diagrams/</loc>
+    <loc>https://rcy1314.github.io/noise/tags/diagrams/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/tags/draw.io/</loc>
+    <loc>https://rcy1314.github.io/noise/tags/draw.io/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/tags/excalidraw/</loc>
+    <loc>https://rcy1314.github.io/noise/tags/excalidraw/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/tags/plantuml/</loc>
+    <loc>https://rcy1314.github.io/noise/tags/plantuml/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/tags/</loc>
+    <loc>https://rcy1314.github.io/noise/tags/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/tags/vscode/</loc>
+    <loc>https://rcy1314.github.io/noise/tags/vscode/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/posts/three-tools-design-system-architecture-and-flow/</loc>
+    <loc>https://rcy1314.github.io/noise/posts/three-tools-design-system-architecture-and-flow/</loc>
     <lastmod>2022-09-17T21:30:26+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/tags/dependency-injection/</loc>
+    <loc>https://rcy1314.github.io/noise/tags/dependency-injection/</loc>
     <lastmod>2022-09-10T13:17:01+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/tags/golang/</loc>
+    <loc>https://rcy1314.github.io/noise/tags/golang/</loc>
     <lastmod>2022-09-10T13:17:01+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/posts/dependency-injection-in-go/</loc>
+    <loc>https://rcy1314.github.io/noise/posts/dependency-injection-in-go/</loc>
     <lastmod>2022-09-10T13:17:01+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/note/note2/</loc>
+    <loc>https://rcy1314.github.io/noise/note/note2/</loc>
     <lastmod>2022-09-02T10:22:14+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/note/</loc>
+    <loc>https://rcy1314.github.io/noise/note/</loc>
     <lastmod>2022-09-02T10:22:14+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/note/note1/</loc>
+    <loc>https://rcy1314.github.io/noise/note/note1/</loc>
     <lastmod>2022-09-01T10:21:27+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/post/</loc>
+    <loc>https://rcy1314.github.io/noise/post/</loc>
     <lastmod>2022-09-01T10:17:19+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/projects/project1/</loc>
+    <loc>https://rcy1314.github.io/noise/projects/project1/</loc>
     <lastmod>2022-09-01T10:17:19+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/projects/project2/</loc>
+    <loc>https://rcy1314.github.io/noise/projects/project2/</loc>
     <lastmod>2022-09-01T10:17:19+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/projects/</loc>
+    <loc>https://rcy1314.github.io/noise/projects/</loc>
     <lastmod>2022-09-01T10:17:19+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/post/post1/</loc>
+    <loc>https://rcy1314.github.io/noise/post/post1/</loc>
     <lastmod>2022-09-01T10:17:19+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/about/</loc>
+    <loc>https://rcy1314.github.io/noise/about/</loc>
     <lastmod>2006-06-22T13:08:07+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url><url>
-    <loc>https://rcy1314.github.io/arts/archives/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://rcy1314.github.io/noise/archives/</loc>
   </url>
 </urlset>
