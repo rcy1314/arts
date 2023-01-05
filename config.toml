@@ -5,7 +5,7 @@ description: 记录分享
 paginate: 10
 hasCJKLanguage: true
 languageCode: 'en-us'
-theme: # "onelou"
+theme = "onelou"
 params:
   opengraph:
     github: 'https://github.com/jyygithub'
@@ -30,22 +30,22 @@ menu:
   navs:
     - name: Blog
       params:
-        img: /img/logo1.png
+        img: /img/logo.png
       url: /blog/
       weight: 1
     - name: Note
       params:
-        img: /img/logo2.png
+        img: /img/logo.png
       weight: 2
       url: /note/
     - name: Projects
       params:
-        img: /img/logo2.png
+        img: /img/logo.png
       url: /projects/
       weight: 2
     - name: About
       params:
-        img: /img/logo3.png
+        img: /img/logo.png
       url: /about
       weight: 3
     - name: 404
