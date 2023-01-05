@@ -1,6 +1,6 @@
-baseURL = "https://rcy1314.github.io/arts/"
+baseURL = "https://rcy1314.github.io/noise/"
 languageCode = "en-us"
-title = "NOISE"
+title = "NOISE&分享"
 theme = "onelou"
 
 metaDataFormat = "yaml"
@@ -13,34 +13,3 @@ metaDataFormat = "yaml"
 disqusShortname = "appleboy48"
 googleAnalytics = "UA-5766319-6"
 enableRobotsTXT = true
-
-[Params]
-  homeTitle = " " # Set a different text for the header on the home page
-  # subtitle = "美食日記，生活日記，電腦筆記"
-  mainSections = ["post","posts"]
-  logo = "https://lh3.googleusercontent.com/Kq9CxHZWopKj__EgF_BpzLv8FhwvDkc0iacrl9V5IJjpr-dZ7Y5O-Vc1i9FhGQ8gHTdKeBisG_1ie1IONQXmK0a3myyl_BNouP76CLHGHRzsPPRgRF3RiKYqOkdS86mZOIu7KYFTUio=w1920-h1080" # Expecting square dimensions
-  favicon = "https://i.imgur.com/PpOg8Dz.jpg"
-  dateFormat = "January 2, 2006"
-  rss = true
-  comments = true
-  readingTime = true
-  wordCount = true
-  # useHLJS = true
-  socialShare = true
-  delayDisqus = true
-  toc = true
-  showRelatedPosts = true
-  share_img = "https://lh3.googleusercontent.com/jsocHCR9A9yEfDVUTrU0m42_aHhTEVDGW5p5PsQSx7GSlkt3gLjohfXH3S7P7p982332ruU_e-EtW0LwmiuZjvN65VIcyME-zE35C6EM0IV1nqY6KoNw3dwW2djjid3F-T5YgnJothA=w1920-h1080"
-  # hideAuthor = true
-  gcse = "003841896160749976666:l9i5hqttpqi" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
-
-
-[sitemap]
-  changefreq = "monthly"
-  priority = 0.5
-  filename = "sitemap.xml"
-
-[outputFormats]
-  [outputFormats.RSS]
-    mediatype = "application/rss"
-    baseName = "feed"
