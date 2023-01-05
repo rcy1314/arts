@@ -25,26 +25,26 @@ menu:
   navs:
     - name: Blog
       params:
-        img: /img/logo.png
+        img: https://www.noisework.cn/assets/logo.png
       url: /post/
       weight: 1
     - name: 月度分享
       params:
-        img: /img/logo.png
+        img: https://www.noisework.cn/assets/logo.png
       weight: 2
       url: /note/
     - name: 收藏阁
       params:
-        img: /img/logo.png
+        img: https://www.noisework.cn/assets/logo.png
       url: /projects/
       weight: 2
     - name: About
       params:
-        img: /img/logo.png
+        img: https://www.noisework.cn/assets/logo.png
       url: /about
       weight: 3
     - name: 404
       params:
-        img: /img/logo.png
+        img: https://www.noisework.cn/assets/logo.png
       url: /404.html
       weight: 4
