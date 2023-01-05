@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html class='theme-container'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+
+    <title>用 Go 語言建立 Web 及 Worker 服務實現取消任務 (二)</title>
+
+    <link rel="canonical" href="https://rcy1314.github.io/myblog/">
+
+    
+    <link rel='stylesheet' type='text/css' href='/myblog/css/common.min.2e0fcb1a7000d167fb8edc8795fd7fa375f12491a92c7e9c4e7cbaabf45d4c90.css'/>
+    
+    <link rel='stylesheet' media='screen and (min-width: 1201px)' type='text/css'
+          href='/myblog/css/normal.min.31aebf352f9ce7e94065b4d20477665d772393827a9185be8575521ab89ce57b.css'/>
+    
+    <link rel='stylesheet' media='screen and (max-width: 1200px)' type='text/css'
+          href='/myblog/css/small.min.e47b2efc4087d6f608db7a76b068966259b87238bb82e48604c1eac68e99b6a8.css'/>
+
+    
+    <link rel='stylesheet' type='text/css' href='/myblog/css/androidstudio.min.min.c0869a17349d3f1bdd078763e8c11ec9808c9f38239bb254720577662fba87bf.css'/>
+    
+    <script src="/myblog/js/highlight.min.min.527b2c4dd19de47518d2a0fbbf849f2cf1230a7e6e40ee0f416f4de8f8539fbf.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<script>
+    hljs.highlightAll();
+</script>
+<body>
+
+<div class="top">
+    <a href="/">
+        <img src="/img/logo.png"/>
+    </a>
+    <nav>
+        
+        <a href="/myblog/blog/">
+            Blog
+        </a>
+        
+        <a href="/myblog/note/">
+            Note
+        </a>
+        
+        <a href="/myblog/projects/">
+            Projects
+        </a>
+        
+        <a href="/myblog/about">
+            About
+        </a>
+        
+        <a href="/myblog/404.html">
+            404
+        </a>
+        
+    </nav>
+</div>
+
+<div id="center" class='center' >
+    
+<header class="center_head">
+    <h1>
+    用 Go 語言建立 Web 及 Worker 服務實現取消任務 (二)
+</h1>
+<div style="text-align: center;opacity: 0.5;margin-top: 0.5em;">
+    2023.01.02 08:32
+</div>
+</header>
+
+    
+<div class="center_main">
+    <a href="../" class="center_main_contents_left">
+        <h1>Posts</h1>
+    </a>
+    <style>
+    .content_post h2::before {
+        content: "※ ";
+    }
+
+    .content_post h3::before {
+        content: "✧ ";
+    }
+</style>
+<article class="content_post heti heti--ancient">
+    <p><img src="https://i.imgur.com/a5rYLFr.png" alt="cancel a task"></p>
+<p>上一篇『<a href="https://blog.wu-boy.com/2022/12/system-design-how-to-cancel-a-running-task-in-golang/">系統設計: 如何取消正在執行的工作任務 (一)</a>』教大家如何用 <a href="https://go.dev">Go 語言</a>實現 <code>canceler</code> package 來紀錄及取消正在執行的任務。而本篇來實現上圖的 <code>HTTP Server</code> 及 <code>Worker</code> 程式碼，底下直接用 Gin 框架來快速實現 HTTP 兩個 Handle，分別是 <code>Cancel Task</code> 及 <code>Ｗatch Task</code> (如下圖標示的 1 跟 2)。</p>
+<p><img src="https://i.imgur.com/dquTd65.png" alt="cancel a task"></p>
+<p>其中上圖綠色框框 <code>1</code> 是用來接收使用者想要取消的任務，而 <code>2</code> 是用來讓 worker 進行長連接，根據不同的情境可以設定不同的等待時間。大家可能會問，為什麼不讓 Server 主動通知 Worker 就可以了，先解釋這點，這邊我們可能要先假設 Worker 存在的環境是封閉的，不能任意架設服務，故需要主動向 HTTP Server 進行詢問。其中 HTTP Server 跟 Worker 中間可以透過 gRPC 或 RESTful 進行資料交換，本篇先以 RESTful 進行說明。</p>
+<h2 id="實現-http-服務">實現 HTTP 服務</h2>
+<p>先透過 Gin 框架簡單實現 HTTP 服務</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">package main
+
+import (
+  &#34;context&#34;
+  &#34;net/http&#34;
+  &#34;time&#34;
+
+  &#34;github.com/gin-gonic/gin&#34;
+)
+
+func main() {
+  r := gin.Default()
+  r.GET(&#34;/ping&#34;, func(c *gin.Context) {
+    c.JSON(http.StatusOK, gin.H{
+      &#34;message&#34;: &#34;pong&#34;,
+    })
+  })
+
+  r.Run() // listen and serve on 0.0.0.0:8080 (for windows &#34;localhost:8080&#34;)
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p><img src="https://i.imgur.com/3WqBNOZ.png" alt="cancel a task"></p>
+<p>先來看看使用者取消任務 (ID 為 1234)，服務端該如何實現？上一篇教學有實現了 <code>schedule</code> package</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">package schedule
+
+type Engine struct {
+  *canceler
+}
+
+func New() *Engine {
+  return &amp;Engine{
+    canceler: newCanceler(),
+  }
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>這時候只需要透過 New() 就可以。</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">// initial schedule instance
+s := schedule.New()</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>接著實現 Cancel Task Handler。</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">r.GET(&#34;/cancel-task/:id&#34;, func(c *gin.Context) {
+  taskID := c.Param(&#34;id&#34;)
+
+  if err := s.Cancel(context.Background(), taskID); err != nil {
+    c.String(http.StatusInternalServerError, &#34;crash&#34;)
+    return
+  }
+
+  c.String(http.StatusOK, &#34;ok&#34;)
+})</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>上述函式執行 Cancel 會將任務 ID 直接紀錄在 struct map 內，後續可以接著更新任務狀態為『取消』，這邊就看大家怎麼存任務，最直接的方式就是更新資料庫。接著時線 <code>Watch Task</code> 函式</p>
+<p><img src="https://i.imgur.com/ebhWNo9.png" alt="cancel a task"></p>
+<p>要做到即時取消任務，故 Worker 需要長時間連接上 HTTP 服務，避免過多的請求，造成不必要的負擔，畢竟任務可能需要長時間去跑，時間設定太短，就會造成 HTTP Server 的負擔。</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">r.GET(&#34;/watch-task/:id&#34;, func(c *gin.Context) {
+  taskID := c.Param(&#34;id&#34;)
+
+  ctxDone, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+  defer cancel()
+
+  ok, _ := s.Cancelled(ctxDone, taskID)
+  if ok {
+    c.String(http.StatusOK, &#34;true&#34;)
+    return
+  }
+
+  c.String(http.StatusOK, &#34;false&#34;)
+})</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>上述程式碼可以看到，透過宣告 context timeout 來決定需要等待多長的時間，超過時間後就回覆 <code>false</code>，由 HTTP 服務端決定 Worker 連接上來後可以等待的時間。</p>
+<h2 id="實現-worker-服務">實現 Worker 服務</h2>
+<p>簡單的 Worker 範例就是開幾個 Goroutine 去持續跟 HTTP 服務連線，直到收到 Cancel 事件。</p>
+<p><img src="https://i.imgur.com/TuFWdNJ.png" alt="cancel a task"></p>
+<p>先假設有兩個任務分別是 <code>1234</code> 及 <code>5678</code>，當這兩個任務正在執行的時候，也順便開 goroutine 在背景跟 HTTP 服務連接，等到任務結束或收到 HTTP 端的中指請求，則結束各自的 Goroutine。</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">package main
+
+import (
+  &#34;fmt&#34;
+  &#34;io&#34;
+  &#34;net/http&#34;
+  &#34;os&#34;
+  &#34;sync&#34;
+)
+
+func cancelTask(id string) []byte {
+  req, err := http.NewRequest(http.MethodGet, &#34;http://localhost:8080/watch-task/&#34;&#43;id, nil)
+  if err != nil {
+    fmt.Printf(&#34;client: could not create request: %s\n&#34;, err)
+    os.Exit(1)
+  }
+
+  res, err := http.DefaultClient.Do(req)
+  if err != nil {
+    fmt.Printf(&#34;client: error making http request: %s\n&#34;, err)
+    os.Exit(1)
+  }
+
+  resBody, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Printf(&#34;client: could not read response body: %s\n&#34;, err)
+    os.Exit(1)
+  }
+  return resBody
+}
+
+func main() {
+  wg := &amp;sync.WaitGroup{}
+
+  wg.Add(1)
+  go func() {
+    defer wg.Done()
+    for {
+      resp := string(cancelTask(&#34;1234&#34;))
+      fmt.Println(&#34;task[1234]: cancel the task:&#34;, resp)
+      if resp == &#34;true&#34; {
+        fmt.Println(&#34;task[1234]: get cancel event and canceld the task&#34;)
+        return
+      }
+    }
+  }()
+  wg.Add(1)
+  go func() {
+    defer wg.Done()
+    for {
+      resp := string(cancelTask(&#34;5678&#34;))
+      fmt.Println(&#34;task[5678]: cancel the task:&#34;, resp)
+      if resp == &#34;true&#34; {
+        fmt.Println(&#34;task[5678]: get cancel event and canceld the task&#34;)
+        return
+      }
+    }
+  }()
+  wg.Wait()
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>上面程式碼範例請不要直接套用在專案內，因為有些狀況尚未寫進去，像是一般 HTTP Client 不會用預設的 <code>http.DefaultClient</code>，因為沒有設定 Timeout 會讓系統整個掛掉，另外 Goroutine 也沒有傳入 Context，會造成背景 Goroutine 都不會結束。這邊只是為了講解才這樣寫的。</p>
+<h2 id="整合測試">整合測試</h2>
+<p><img src="https://i.imgur.com/PRvUBUp.png" alt="cancel a task"></p>
+<p>主要測試的目的就是，當第一個 worker 正在處理 <code>1234</code> 任務時，不知道什麼原因，突然跟 HTTP Server 失去連線 (上圖步驟二)，此時如果步驟一收到使用者發送取消的請求，Worker 恢復連線後，要正確即時收到 Cancel 事件，才能完成取消任務。</p>
+<h2 id="心得">心得</h2>
+<p>處理長時間的任務，可能會遇到底下問題</p>
+<ol>
+<li>如何取得目前任務的狀態？</li>
+<li>如何設定任務超時機制？</li>
+<li>如何跨服務取消任務？</li>
+<li>當 Worker 失去連線或不正常關閉，該如何讓 Task 可以重新執行？</li>
+<li>當有多台 Server + 多台 Worker 時，該如何配送任務及取消任務？</li>
+</ol>
+<p>團隊除了需要解決此架構之外，也把上述的機制也實現在 <a href="https://aws.amazon.com/sagemaker/">AWS SageMaker</a> 上，打造 AWS MLOps 平台。本篇程式碼可以在<a href="https://github.com/go-training/training/tree/master/example51-canceler">這邊找到</a>。</p>
+</article>
+
+<div class="content_post_button">
+    
+    <button onclick="window.location.href = 'https:\/\/rcy1314.github.io\/myblog\/posts\/system-design-how-to-cancel-a-running-task-in-golang\/'">
+        <span style="color: var(--primary-color);">上一篇</span><br />用 Go 語言實作如何取消正在執行的工作任務 (一)
+    </button>
+    
+    
+</div>
+<a class="back_top" href="javascript:window.scrollTo(0,0);">
+    <svg t="1660722824713" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="1359" width="64" height="64">
+        <path
+            d="M484 93.668c-231.038 0-418.333 187.296-418.333 418.335 0 231.038 187.296 418.327 418.333 418.327 231.036 0 418.333-187.289 418.333-418.327C902.334 280.964 715.036 93.668 484 93.668zM372.207 811.881c-0.412 8.174-4.906 12.669-13.493 13.493-6.545 0-11.863-0.614-15.946-1.841-4.504-1.639-6.545-4.906-6.133-9.813 1.629-4.906 4.695-7.148 9.199-6.746 6.948 1.639 10.215 0.613 9.813-3.066l0-96.902-12.266 0c-4.504-0.402-6.746-3.268-6.746-8.586 0.402-4.907 2.855-7.562 7.359-7.974l36.185 0c2.453 0 4.083 1.025 4.906 3.066 1.227-2.855 3.469-4.494 6.747-4.906l82.183 0c4.495 0.412 6.747 3.277 6.747 8.587-0.412 5.318-2.865 8.184-7.36 8.586l-36.798 0-2.453 11.652 23.919 0c10.215-0.402 14.92 3.891 14.106 12.88l0 63.17c-0.412 4.504-3.277 6.957-8.586 7.36-5.318-0.403-8.184-2.856-8.586-7.36l0-57.037c0-1.227-0.613-1.84-1.84-1.84l-43.545 0c-0.824 0.412-1.438 1.025-1.84 1.84l0 55.811c-0.412 4.906-3.277 7.57-8.586 7.974-5.318-0.403-8.184-3.067-8.586-7.974l0-61.943c0-8.586 3.68-12.88 11.04-12.88l14.719 0 3.066-11.652-25.759 0c-2.453 0-5.117-1.016-7.973-3.066-1.227 2.865-3.479 4.293-6.746 4.293l-6.747 0L372.207 811.881zM479.536 824.146c-3.277 4.907-7.571 5.722-12.879 2.454-2.865-1.227-7.571-3.891-14.106-7.974-6.133-3.277-10.838-5.52-14.106-6.746-6.133-2.855-8.586-6.334-7.359-10.426-1.227 2.051-3.68 4.504-7.36 7.359-0.412 0.412-0.824 0.824-1.227 1.227-9.41 7.762-20.239 13.896-32.505 18.399-5.73 1.629-9.813 0.201-12.266-4.294-1.639-4.906 0-8.586 4.906-11.039 18.802-7.762 30.253-15.534 34.345-23.306 4.494-7.359 6.746-21.054 6.746-41.091 0.403-5.722 3.067-8.788 7.973-9.2 5.309 0.412 8.174 3.479 8.586 9.2 0.814 20.852-1.639 36.798-7.36 47.837 4.083-4.906 9.401-5.107 15.946-0.613 4.907 2.865 11.442 6.546 19.626 11.04 3.68 2.453 6.334 4.092 7.973 4.906C481.375 814.736 482.391 818.828 479.536 824.146zM556.198 822.307l-41.704 0c-7.772-0.412-11.864-3.891-12.267-10.426l0-34.345c-0.412-8.989 3.68-13.282 12.267-12.88l42.931 0c7.763-0.402 11.653 3.891 11.653 12.88l0 34.958C569.48 819.029 565.188 822.307 556.198 822.307zM614.462 817.4c-6.545 0-11.652-0.824-15.332-2.453-4.092-2.051-5.318-5.309-3.68-9.813 1.629-4.906 5.107-6.747 10.426-5.52 11.04 2.453 15.735-1.841 14.106-12.88-0.412-8.174-5.933-18.399-16.56-30.665-3.68-3.68-4.293-9.2-1.84-16.56 4.494-13.895 7.561-24.532 9.199-31.892l-16.559 0c-1.227 0-2.051 0.824-2.453 2.453l0 110.395c-0.412 5.31-3.067 8.175-7.974 8.587-5.318-0.412-8.184-3.277-8.586-8.587l0-65.01c-1.227 1.639-2.865 2.453-4.906 2.453l-69.304 0c-4.504-0.402-6.957-3.268-7.359-8.586 0.402-5.31 2.855-8.175 7.359-8.587l14.72 0c-0.824-0.814-3.68-5.721-8.586-14.719-2.051-5.31-0.613-8.989 4.293-11.04l-7.36 0c-4.504-0.402-6.957-3.268-7.359-8.586 0.402-5.309 2.855-8.174 7.359-8.586l22.079 0c-0.824-1.227-1.227-2.453-1.227-3.681-1.227-4.082 0.613-7.359 5.52-9.813 5.721-2.041 9.401-1.016 11.04 3.066 1.227 3.68 2.654 7.158 4.293 10.427l20.239 0c4.494 0.412 6.947 3.277 7.359 8.586-0.412 5.318-2.865 8.184-7.359 8.586l-47.225 0c2.855 1.639 6.334 7.36 10.426 17.173 1.227 4.092 0.814 6.957-1.227 8.586l13.493 0c0.402-1.227 1.016-2.855 1.84-4.906 2.453-6.133 4.082-11.039 4.906-14.72 1.629-4.082 5.107-5.721 10.426-4.906 4.906 2.051 6.747 5.318 5.521 9.813-0.824 2.051-1.639 4.504-2.454 7.359-1.227 3.277-2.252 5.932-3.066 7.973l11.04 0c2.453 0 4.082 0.613 4.906 1.84l0-41.704c0-8.175 3.066-12.056 9.199-11.653l36.799 0c9.4 0 13.08 5.117 11.039 15.333 0 0.412-1.025 3.891-3.066 10.426-3.277 10.226-5.52 17.786-6.746 22.692-1.227 3.68-1.84 6.344-1.84 7.973 0.402 1.228 1.629 3.067 3.68 5.521 8.586 13.09 13.281 25.356 14.105 36.798C638.17 807.387 630.408 816.988 614.462 817.4zM646.896 466.315c-7.488 7.449-18.815 7.642-25.649 0.806-0.538-0.537-1.074-0.922-1.536-1.535L502.752 348.858l-0.192 280.106c0 9.139-8.601 16.549-19.198 16.549-10.598 0-18.738-7.41-18.738-16.549 0-0.729-0.115-1.306 0-2.034l-0.192-278.072L347.513 465.586c-0.422 0.652-0.959 0.999-1.536 1.535-6.834 6.874-18.162 6.681-25.649-0.806-7.488-7.488-8.025-19.122-1.152-25.995L467.12 292.03c2.112-3.263 5.26-5.913 9.369-7.333 2.074-0.807 4.262-1.152 6.528-1.113 0.23 0 0.383-0.116 0.614-0.116 0.153 0 0.307 0.078 0.46 0.078 2.304-0.078 4.57 0.307 6.72 1.152 3.994 1.421 7.142 4.07 9.254 7.219L648.048 440.32C654.92 447.155 654.383 458.827 646.896 466.315zM636.605 238.121 331.771 238.121c-9.407 0-17.049-7.564-17.049-16.857 0-9.292 7.642-16.856 17.049-16.856l304.835 0c9.445 0 17.048 7.564 17.048 16.856C653.653 230.557 646.013 238.121 636.605 238.121zM549.452 781.829 521.24 781.829c-1.227 0-2.051 0.824-2.453 2.453l0 19.013c0.402 1.639 1.227 2.453 2.453 2.453l28.212 0c1.629-0.402 2.453-1.227 2.453-2.453l0-19.013C551.905 782.653 551.081 781.829 549.452 781.829z"
+            p-id="1360" fill="#343232"></path>
+    </svg>
+</a>
+
+
+    <div class="center_main_contents_title">
+    <h2>目录</h2>
+</div>
+<div class="center_main_contents_main">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#實現-http-服務">實現 HTTP 服務</a></li>
+    <li><a href="#實現-worker-服務">實現 Worker 服務</a></li>
+    <li><a href="#整合測試">整合測試</a></li>
+    <li><a href="#心得">心得</a></li>
+  </ul>
+</nav>
+</div>
+</div>
+
+</div>
+</body>
+
+
+
+
+
+</html>

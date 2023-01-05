@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My Blog on NOISE</title>
+    <link>https://rcy1314.github.io/myblog/post/</link>
+    <description>Recent content in My Blog on NOISE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Sep 2022 10:17:19 +0800</lastBuildDate><atom:link href="https://rcy1314.github.io/myblog/post/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test blog</title>
+      <link>https://rcy1314.github.io/myblog/post/post1/</link>
+      <pubDate>Thu, 01 Sep 2022 10:17:19 +0800</pubDate>
+      
+      <guid>https://rcy1314.github.io/myblog/post/post1/</guid>
+      <description>H2 H3 fsdf lsdjl jggj fjdggj lkrjerg iergrdg;serigjerogjoiergj oeri;jg er;oi greoigj er; gj;erog erjg oer ger;eorgj er
+Code html &amp;lt;!doctype html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Example HTML5 Document&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;p&amp;gt;Test&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; Blockquote flkdsjfg wp gherog oreig dfngserg oie gdfgnreo ghreog ngkjfdsgeroghg jfdlgfd gfdogeroig fgnreog herognb,bnd;glaergh gnlds;gerter tgndflgnerghowtsd,gmnxbvbnkjdrgheroigbmndfljgnerog regdfgkndfl dfigj erg wgnfgdfnghwoatweggnsdflgjewpgjw epdgnflg egwejpg gnsdgnweoigfngjbdlkgosgpweotsngdfjgn wgjw eg
+H2 Table ABC EDF GHI 123 456 789 List fruit apple banana meat beef chicken Math $$ c = \sqrt{a^{2}+b_{xy}^{2}+e^{x}} $$</description>
+    </item>
+    
+  </channel>
+</rss>

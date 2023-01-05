@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class='theme-container'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+
+    <title>三款好用的繪圖工具來解決系統架構或流程圖</title>
+
+    <link rel="canonical" href="https://rcy1314.github.io/myblog/">
+
+    
+    <link rel='stylesheet' type='text/css' href='/myblog/css/common.min.2e0fcb1a7000d167fb8edc8795fd7fa375f12491a92c7e9c4e7cbaabf45d4c90.css'/>
+    
+    <link rel='stylesheet' media='screen and (min-width: 1201px)' type='text/css'
+          href='/myblog/css/normal.min.31aebf352f9ce7e94065b4d20477665d772393827a9185be8575521ab89ce57b.css'/>
+    
+    <link rel='stylesheet' media='screen and (max-width: 1200px)' type='text/css'
+          href='/myblog/css/small.min.e47b2efc4087d6f608db7a76b068966259b87238bb82e48604c1eac68e99b6a8.css'/>
+
+    
+    <link rel='stylesheet' type='text/css' href='/myblog/css/androidstudio.min.min.c0869a17349d3f1bdd078763e8c11ec9808c9f38239bb254720577662fba87bf.css'/>
+    
+    <script src="/myblog/js/highlight.min.min.527b2c4dd19de47518d2a0fbbf849f2cf1230a7e6e40ee0f416f4de8f8539fbf.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<script>
+    hljs.highlightAll();
+</script>
+<body>
+
+<div class="top">
+    <a href="/">
+        <img src="/img/logo.png"/>
+    </a>
+    <nav>
+        
+        <a href="/myblog/blog/">
+            Blog
+        </a>
+        
+        <a href="/myblog/note/">
+            Note
+        </a>
+        
+        <a href="/myblog/projects/">
+            Projects
+        </a>
+        
+        <a href="/myblog/about">
+            About
+        </a>
+        
+        <a href="/myblog/404.html">
+            404
+        </a>
+        
+    </nav>
+</div>
+
+<div id="center" class='center' >
+    
+<header class="center_head">
+    <h1>
+    三款好用的繪圖工具來解決系統架構或流程圖
+</h1>
+<div style="text-align: center;opacity: 0.5;margin-top: 0.5em;">
+    2022.09.17 21:30
+</div>
+</header>
+
+    
+<div class="center_main">
+    <a href="../" class="center_main_contents_left">
+        <h1>Posts</h1>
+    </a>
+    <style>
+    .content_post h2::before {
+        content: "※ ";
+    }
+
+    .content_post h3::before {
+        content: "✧ ";
+    }
+</style>
+<article class="content_post heti heti--ancient">
+    <p><img src="https://i.imgur.com/0sA0St5.png" alt="drwaio 01"></p>
+<p>不管是長官還是同事甚至下屬，在公司無時無刻都需要跨團隊進行溝通，當系統架構或流程越來越複雜的時候，如果沒有按照當下情況記錄下來，對於未來接手的同事，或者是自己都會不小心忘記，而在記憶最清楚的當下用文字或流程圖記錄下來，對團隊及自己是有相當大的幫助。而有沒有工具可以快速畫出系統架構或流程圖？我們可以分幾種情境來討論。</p>
+<p>第一種是程式碼架構流程圖，跟開發團隊一起開發功能時，開發者可以先將程式的流程圖先畫出來，跟團隊進行第一輪討論，避免實作下去時，考慮太少，多與團隊進行溝通，對自己是非常有幫助的。</p>
+<p>第二種是專案剛開始，或發展到一定程度，需要將全部系統架構整理下來，團隊可能用了 <a href="https://aws.amazon.com/">AWS</a> 或 <a href="https://cloud.google.com/">GCP</a> 等服務，有一個全貌的系統架構圖，可以協助團隊釐清專案到底使用了哪些工具？讓剛加入的同事可以透過此架構圖快速了解並進入狀況。底下來介紹三套我個人蠻推薦的三種繪製工具。</p>
+<h2 id="教學影片">教學影片</h2>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/IgD_XAKwAyk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<div class="highlight">
+    <span class="highlight-type">sh</span>
+    <pre><code class="language-sh hljs" data-lang="sh">00:00 為什麼需要畫系統架構圖
+00:49 第一種情境
+01:28 第二種情境
+02:07 第一套好用工具 PlantUML
+05:50 第二套 Diagrams
+07:40 第三套 Excalidraw
+09:08 使用時機</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "sh";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>其他線上課程請參考如下</p>
+<ul>
+<li><a href="https://blog.wu-boy.com/docker-course/">Docker 容器實戰</a></li>
+<li><a href="https://blog.wu-boy.com/golang-online-course/">Go 語言課程</a></li>
+</ul>
+<h2 id="plantuml">PlantUML</h2>
+<p><a href="https://plantuml.com/">PlantUML</a> 是可以用純文本語言繪製圖表的<a href="https://github.com/plantuml/plantuml">開源軟體</a>，由於是純文字語言，所以可以搭配版本控制做紀錄，非常適合團隊或跨團隊合作溝通，尤其是架構初期，會需要常常修改，所以用 PlantUML 非常適合，跟同事進行快速討論迭代修正。</p>
+<p>強大的 PlantUML 有提供線上版本進行撰寫，叫做 <a href="https://www.planttext.com/">PlantText</a>，除了線上版本讓大家可以測試之外，開發者也可以透過 VSCode 的 PlantUML 套件進行整合，一邊撰寫流程，一邊預覽，如下圖</p>
+<p><img src="https://i.imgur.com/9ecP8fn.png" alt="plantUML 01"></p>
+<p>拿一個實際案例來看看</p>
+<div class="highlight">
+    <span class="highlight-type">plantuml</span>
+    <pre><code class="language-plantuml hljs" data-lang="plantuml">@startuml Converter CLI
+queue  &#34;AWS SQS&#34;  as queue order 20
+actor &#34;User&#34; as user order 10
+database &#34;AWS S3&#34; as s3_storage order 15
+participant &#34;API Server&#34; as api_server order 50
+
+box &#34;Docker Container&#34; #LightBlue
+participant &#34;Go Service&#34; as go_cli order 30 #99FF99
+participant &#34;Python CLI&#34; as python_cli order 40 #99FF99
+database &#34;Local Storage&#34; as local_storage order 35
+end box
+
+autonumber
+go_cli -&gt; queue: Listen Notification Queue
+user -&gt; s3_storage: Upload Dataset
+queue &lt;- s3_storage: Send Notification
+go_cli &lt;- queue: Receive Notification
+go_cli -&gt; local_storage: Create /tmp folder
+go_cli &lt;- s3_storage: Download Origin Dataset
+go_cli -&gt; local_storage: Save Dataset to /tmp folder
+go_cli -&gt; python_cli: Execute CLI command
+python_cli -[#0000FF]&gt; local_storage: Save Progress Number to /tmp folder
+go_cli -&gt; api_server: Upload Convert Progress
+python_cli -[#0000FF]&gt; local_storage: Save output.zip and dataset.yml to /tmp
+go_cli -&gt; api_server: Upload dataset type and class number
+go_cli -&gt; s3_storage: Upload output.zip to S3
+go_cli -&gt; api_server: Upload Status to Success
+go_cli -&gt; queue: Remove Notification
+@enduml</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "plantuml";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>產生的圖如下，或<a href="https://www.planttext.com/?text=bLJVRzem47xtNt4AptHqZ0VGD7M3CLL27MrKxM6Qa76kr5fYP_QPbVtrlHX3WD9AorCIV_VzkBlaofDq5AeInjQiqH4w6C-knP-00G6oppzoo6_p341wsBwqhc3G-vwGYgo3xDwZovhZm3VfzB8d2aboAJqcZdw4-Fx2Sv5SxMWk1w9c0rhfMXfYxFmQSdJhH2bhlV3nCU47FI6MzWcoYLM_6w_MaDIcWNTcUlL8Nyg0nvJVR6JK2YFboYvKgHDTlmUTuN0w7GwFQ-ORUhIcwKIigUFZGTs7jgxDERDAbf1lyyMwidbpahW_46WAu112o43MX6g9JYHRtK_RBezWfZsXWHjB-a4hIPhzt3P78lQPWMqpHt1VbrOMC64p7YcDxsFt29CtkeTyEr769T4xLAZNU1R5YaTvHZ1sA0dX7LKrFDYoQ6ESA4_iNnFzVNTwfStUvglCkMGJ2GLapqbmKJkM4NnzGXNO38yCbAqgQGfnCBRkpqwFh-dqrtcjkRChXzx3JHp7wvhjHkwRdhwSFSV_wDf0TQ2BVxe6TWp5DlB5XZ_8PE5jxMBNeqsDaK6LabEyMAepkt8WpL9v_ssXd2G57v51gIRbYuszmygUxiuLxnp_NSGp">線上編輯測試看看</a></p>
+<p><img src="https://i.imgur.com/4eHaFIR.png" alt="plantUML 02"></p>
+<p>從上圖就可以知道透過 CLI 工具上傳 Dataset 到 AWS S3 會經過哪些步驟跟流程。假設沒有先把流程圖畫出來，其實很難想像跨團隊要怎麼合作。</p>
+<h2 id="diagrams">Diagrams</h2>
+<p>上面的 PlantUML 協助團隊釐清開發流程圖，假設您需要更多工具或圖形介面來描述整體的系統架構圖，也或者是需要對上對下報告有一個更完整的全貌，推薦大家使用 <a href="https://www.diagrams.net/">Diagrams</a>，裡面有完整的圖庫跟功能，也支援<a href="https://github.com/jgraph/drawio-desktop">離線桌面版</a>或<a href="https://app.diagrams.net/">線上修改</a>。可以把檔案放在 GitHub 內由線上版讀取。來看看底下可以教學影片體驗 Diagrams 的強大</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/CU0ZhMoXz7k" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>繪製完成後，可以輸出任何檔案格式。底下看看一張系統架構圖</p>
+<p><img src="https://i.imgur.com/nOQEvk9.png" alt="Diagrams 01"></p>
+<h2 id="excalidraw">Excalidraw</h2>
+<p>除了上述兩套工具外，如果你想要快速畫出一個流程圖，又不想裝一大堆工具，強烈推薦 <a href="https://excalidraw.com/">Excalidraw</a> 這套線上流程圖軟體，它也是<a href="https://github.com/excalidraw/excalidraw">開源軟體</a>。底下看看實際案例，我放在 <a href="https://github.com/golang-queue/redisdb-stream">redisdb-stream</a> 專案內的架構圖。</p>
+<p><img src="https://i.imgur.com/vy3tzXU.png" alt="Excalidraw 01"></p>
+<p>另外可以參考 <a href="https://signoz.io">Signoz</a> 公開的文件：<a href="https://signoz.io/docs/userguide/logs/">Logs Overview</a>，裡面大量用到 Excalidraw 畫出來的流程圖。</p>
+<h2 id="心得結論">心得結論</h2>
+<p>上面有三套好用的畫圖工具，我個人使用的時機不盡相同，如果是簡易的流程圖，我都直接用 <a href="https://excalidraw.com/">Excalidraw</a> 快速搞定，不想花太多時間進行繪製，尤其是時間很趕的時候。跨團隊或內部開發溝通時，我就會用 <a href="https://plantuml.com/">PlantUML</a>，將開發流程描述清楚，避免在合作上面出現差錯，讓其他開發同仁產生誤會。到專案中期或後期，整體架構比較確定後，我會在用 <a href="https://www.diagrams.net/">Diagrams</a> 繪製系統流程，讓團隊或長官可以更加了解專案的全貌。</p>
+</article>
+
+<div class="content_post_button">
+    
+    <button onclick="window.location.href = 'https:\/\/rcy1314.github.io\/myblog\/posts\/dependency-injection-in-go\/'">
+        <span style="color: var(--primary-color);">上一篇</span><br />用 Google 團隊推出的 Wire 工具解決 Dependency Injection
+    </button>
+    
+    
+    <button onclick="window.location.href = 'https:\/\/rcy1314.github.io\/myblog\/posts\/simple-scheduler-with-multiple-worker-using-golang\/'">
+        <span style="color: var(--primary-color);">下一篇</span><br />系統設計: 處理服務讀取多個任務遇到的問題 (Go 語言)
+    </button>
+    
+</div>
+<a class="back_top" href="javascript:window.scrollTo(0,0);">
+    <svg t="1660722824713" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="1359" width="64" height="64">
+        <path
+            d="M484 93.668c-231.038 0-418.333 187.296-418.333 418.335 0 231.038 187.296 418.327 418.333 418.327 231.036 0 418.333-187.289 418.333-418.327C902.334 280.964 715.036 93.668 484 93.668zM372.207 811.881c-0.412 8.174-4.906 12.669-13.493 13.493-6.545 0-11.863-0.614-15.946-1.841-4.504-1.639-6.545-4.906-6.133-9.813 1.629-4.906 4.695-7.148 9.199-6.746 6.948 1.639 10.215 0.613 9.813-3.066l0-96.902-12.266 0c-4.504-0.402-6.746-3.268-6.746-8.586 0.402-4.907 2.855-7.562 7.359-7.974l36.185 0c2.453 0 4.083 1.025 4.906 3.066 1.227-2.855 3.469-4.494 6.747-4.906l82.183 0c4.495 0.412 6.747 3.277 6.747 8.587-0.412 5.318-2.865 8.184-7.36 8.586l-36.798 0-2.453 11.652 23.919 0c10.215-0.402 14.92 3.891 14.106 12.88l0 63.17c-0.412 4.504-3.277 6.957-8.586 7.36-5.318-0.403-8.184-2.856-8.586-7.36l0-57.037c0-1.227-0.613-1.84-1.84-1.84l-43.545 0c-0.824 0.412-1.438 1.025-1.84 1.84l0 55.811c-0.412 4.906-3.277 7.57-8.586 7.974-5.318-0.403-8.184-3.067-8.586-7.974l0-61.943c0-8.586 3.68-12.88 11.04-12.88l14.719 0 3.066-11.652-25.759 0c-2.453 0-5.117-1.016-7.973-3.066-1.227 2.865-3.479 4.293-6.746 4.293l-6.747 0L372.207 811.881zM479.536 824.146c-3.277 4.907-7.571 5.722-12.879 2.454-2.865-1.227-7.571-3.891-14.106-7.974-6.133-3.277-10.838-5.52-14.106-6.746-6.133-2.855-8.586-6.334-7.359-10.426-1.227 2.051-3.68 4.504-7.36 7.359-0.412 0.412-0.824 0.824-1.227 1.227-9.41 7.762-20.239 13.896-32.505 18.399-5.73 1.629-9.813 0.201-12.266-4.294-1.639-4.906 0-8.586 4.906-11.039 18.802-7.762 30.253-15.534 34.345-23.306 4.494-7.359 6.746-21.054 6.746-41.091 0.403-5.722 3.067-8.788 7.973-9.2 5.309 0.412 8.174 3.479 8.586 9.2 0.814 20.852-1.639 36.798-7.36 47.837 4.083-4.906 9.401-5.107 15.946-0.613 4.907 2.865 11.442 6.546 19.626 11.04 3.68 2.453 6.334 4.092 7.973 4.906C481.375 814.736 482.391 818.828 479.536 824.146zM556.198 822.307l-41.704 0c-7.772-0.412-11.864-3.891-12.267-10.426l0-34.345c-0.412-8.989 3.68-13.282 12.267-12.88l42.931 0c7.763-0.402 11.653 3.891 11.653 12.88l0 34.958C569.48 819.029 565.188 822.307 556.198 822.307zM614.462 817.4c-6.545 0-11.652-0.824-15.332-2.453-4.092-2.051-5.318-5.309-3.68-9.813 1.629-4.906 5.107-6.747 10.426-5.52 11.04 2.453 15.735-1.841 14.106-12.88-0.412-8.174-5.933-18.399-16.56-30.665-3.68-3.68-4.293-9.2-1.84-16.56 4.494-13.895 7.561-24.532 9.199-31.892l-16.559 0c-1.227 0-2.051 0.824-2.453 2.453l0 110.395c-0.412 5.31-3.067 8.175-7.974 8.587-5.318-0.412-8.184-3.277-8.586-8.587l0-65.01c-1.227 1.639-2.865 2.453-4.906 2.453l-69.304 0c-4.504-0.402-6.957-3.268-7.359-8.586 0.402-5.31 2.855-8.175 7.359-8.587l14.72 0c-0.824-0.814-3.68-5.721-8.586-14.719-2.051-5.31-0.613-8.989 4.293-11.04l-7.36 0c-4.504-0.402-6.957-3.268-7.359-8.586 0.402-5.309 2.855-8.174 7.359-8.586l22.079 0c-0.824-1.227-1.227-2.453-1.227-3.681-1.227-4.082 0.613-7.359 5.52-9.813 5.721-2.041 9.401-1.016 11.04 3.066 1.227 3.68 2.654 7.158 4.293 10.427l20.239 0c4.494 0.412 6.947 3.277 7.359 8.586-0.412 5.318-2.865 8.184-7.359 8.586l-47.225 0c2.855 1.639 6.334 7.36 10.426 17.173 1.227 4.092 0.814 6.957-1.227 8.586l13.493 0c0.402-1.227 1.016-2.855 1.84-4.906 2.453-6.133 4.082-11.039 4.906-14.72 1.629-4.082 5.107-5.721 10.426-4.906 4.906 2.051 6.747 5.318 5.521 9.813-0.824 2.051-1.639 4.504-2.454 7.359-1.227 3.277-2.252 5.932-3.066 7.973l11.04 0c2.453 0 4.082 0.613 4.906 1.84l0-41.704c0-8.175 3.066-12.056 9.199-11.653l36.799 0c9.4 0 13.08 5.117 11.039 15.333 0 0.412-1.025 3.891-3.066 10.426-3.277 10.226-5.52 17.786-6.746 22.692-1.227 3.68-1.84 6.344-1.84 7.973 0.402 1.228 1.629 3.067 3.68 5.521 8.586 13.09 13.281 25.356 14.105 36.798C638.17 807.387 630.408 816.988 614.462 817.4zM646.896 466.315c-7.488 7.449-18.815 7.642-25.649 0.806-0.538-0.537-1.074-0.922-1.536-1.535L502.752 348.858l-0.192 280.106c0 9.139-8.601 16.549-19.198 16.549-10.598 0-18.738-7.41-18.738-16.549 0-0.729-0.115-1.306 0-2.034l-0.192-278.072L347.513 465.586c-0.422 0.652-0.959 0.999-1.536 1.535-6.834 6.874-18.162 6.681-25.649-0.806-7.488-7.488-8.025-19.122-1.152-25.995L467.12 292.03c2.112-3.263 5.26-5.913 9.369-7.333 2.074-0.807 4.262-1.152 6.528-1.113 0.23 0 0.383-0.116 0.614-0.116 0.153 0 0.307 0.078 0.46 0.078 2.304-0.078 4.57 0.307 6.72 1.152 3.994 1.421 7.142 4.07 9.254 7.219L648.048 440.32C654.92 447.155 654.383 458.827 646.896 466.315zM636.605 238.121 331.771 238.121c-9.407 0-17.049-7.564-17.049-16.857 0-9.292 7.642-16.856 17.049-16.856l304.835 0c9.445 0 17.048 7.564 17.048 16.856C653.653 230.557 646.013 238.121 636.605 238.121zM549.452 781.829 521.24 781.829c-1.227 0-2.051 0.824-2.453 2.453l0 19.013c0.402 1.639 1.227 2.453 2.453 2.453l28.212 0c1.629-0.402 2.453-1.227 2.453-2.453l0-19.013C551.905 782.653 551.081 781.829 549.452 781.829z"
+            p-id="1360" fill="#343232"></path>
+    </svg>
+</a>
+
+
+    <div class="center_main_contents_title">
+    <h2>目录</h2>
+</div>
+<div class="center_main_contents_main">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#教學影片">教學影片</a></li>
+    <li><a href="#plantuml">PlantUML</a></li>
+    <li><a href="#diagrams">Diagrams</a></li>
+    <li><a href="#excalidraw">Excalidraw</a></li>
+    <li><a href="#心得結論">心得結論</a></li>
+  </ul>
+</nav>
+</div>
+</div>
+
+</div>
+</body>
+
+
+
+
+
+</html>

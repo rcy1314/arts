@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html class='theme-container'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+
+    <title>用 Go 語言實作如何取消正在執行的工作任務 (一)</title>
+
+    <link rel="canonical" href="https://rcy1314.github.io/myblog/">
+
+    
+    <link rel='stylesheet' type='text/css' href='/myblog/css/common.min.2e0fcb1a7000d167fb8edc8795fd7fa375f12491a92c7e9c4e7cbaabf45d4c90.css'/>
+    
+    <link rel='stylesheet' media='screen and (min-width: 1201px)' type='text/css'
+          href='/myblog/css/normal.min.31aebf352f9ce7e94065b4d20477665d772393827a9185be8575521ab89ce57b.css'/>
+    
+    <link rel='stylesheet' media='screen and (max-width: 1200px)' type='text/css'
+          href='/myblog/css/small.min.e47b2efc4087d6f608db7a76b068966259b87238bb82e48604c1eac68e99b6a8.css'/>
+
+    
+    <link rel='stylesheet' type='text/css' href='/myblog/css/androidstudio.min.min.c0869a17349d3f1bdd078763e8c11ec9808c9f38239bb254720577662fba87bf.css'/>
+    
+    <script src="/myblog/js/highlight.min.min.527b2c4dd19de47518d2a0fbbf849f2cf1230a7e6e40ee0f416f4de8f8539fbf.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<script>
+    hljs.highlightAll();
+</script>
+<body>
+
+<div class="top">
+    <a href="/">
+        <img src="/img/logo.png"/>
+    </a>
+    <nav>
+        
+        <a href="/myblog/blog/">
+            Blog
+        </a>
+        
+        <a href="/myblog/note/">
+            Note
+        </a>
+        
+        <a href="/myblog/projects/">
+            Projects
+        </a>
+        
+        <a href="/myblog/about">
+            About
+        </a>
+        
+        <a href="/myblog/404.html">
+            404
+        </a>
+        
+    </nav>
+</div>
+
+<div id="center" class='center' >
+    
+<header class="center_head">
+    <h1>
+    用 Go 語言實作如何取消正在執行的工作任務 (一)
+</h1>
+<div style="text-align: center;opacity: 0.5;margin-top: 0.5em;">
+    2022.12.23 08:32
+</div>
+</header>
+
+    
+<div class="center_main">
+    <a href="../" class="center_main_contents_left">
+        <h1>Posts</h1>
+    </a>
+    <style>
+    .content_post h2::before {
+        content: "※ ";
+    }
+
+    .content_post h3::before {
+        content: "✧ ";
+    }
+</style>
+<article class="content_post heti heti--ancient">
+    <p><img src="https://i.imgur.com/VZyfv0M.png" alt="cancel a task"></p>
+<p>本篇來聊聊『如何取消正在執行的工作任務』，當系統內有需要處理比較久或較多資源的任務，肯定會將這些任務丟到其他機器再執行，執行過程如果需要取消，會經過如上圖幾個步驟。先假設中間的過程不透過 Message Queue 機制，而是兩個服務進行溝通透過 <a href="https://aws.amazon.com/tw/what-is/restful-api/">RESTful</a> 或 <a href="https://grpc.io/">gRPC</a> 方式。</p>
+<h2 id="教學影片">教學影片</h2>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/tj95O--us70" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<div class="highlight">
+    <span class="highlight-type">sh</span>
+    <pre><code class="language-sh hljs" data-lang="sh">00:00 情境介紹
+02:08 設計問題優缺點
+03:44 單機版本實現方式
+06:04 worker 連線請求
+08:44 User 取消任務請求
+12:24 worker 斷線跟如何處理?
+13:26 解決方式 (設計 Timeout 機制)
+15:52 清除 map 不必要資訊
+17:47 實作後心得</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "sh";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>其他線上課程請參考如下</p>
+<ul>
+<li><a href="https://blog.wu-boy.com/docker-course/">Docker 容器實戰</a></li>
+<li><a href="https://blog.wu-boy.com/golang-online-course/">Go 語言課程</a></li>
+</ul>
+<h2 id="使用情境">使用情境</h2>
+<p>可以看到步驟一是 worker 會先發請求到後端服務，詢問目前正在執行的任務是否取消，這邊可以用一個長連接持續 30 秒或 1 分鐘才斷線。步驟二是 User 從 Web UI 端按下取消的按鈕。步驟三是後端服務接受到取消任務的請求，就回覆 Worker 到請求執行取消任務。</p>
+<p>大家可以想看看此情境該如何設計流程，先不考慮多台後端服務的情境，也不考慮使用 Message Queue 的方式來實作。也許大家有想到一種方式，就是當使用者按下取消時 (到步驟三)，後端服務將此任務的狀態改成<strong>取消</strong>。而 Worker 每次來詢問狀態 (步驟一)，後端就再查詢一次就可以了 (步驟四)，這方式也沒有不對，只是即時性效果比較差，如果是每 30 秒輪詢一次，就有可能 30 秒後才能取消任務，輪詢時間設定很短，又會造成過多不必要的連線請求。除了這種方式外，還有沒有其他方式可以不需要查詢資料庫就可以即時讓 Worker 知道目前任務狀態。</p>
+<h2 id="單機實作方式">單機實作方式</h2>
+<p>用 <a href="https://go.dev">Go 語言</a>來處理後端跟 Worker 之間的資料交換機制。可以看下圖，先實作 canceller package，裡面有兩個不同的 Method，一個是 <code>Cancel</code> 用來處裡使用者取消哪一筆任務，另一個是 <code>Cancelled</code> 用來接受 Worker 的連線請求。</p>
+<p><img src="https://i.imgur.com/TuWbShu.png" alt="cancel a task"></p>
+<p>這邊先考慮單個後端服務，為什麼先只考慮單個後端呢？原因就是底下的解法只適合在單一後端下才可以，多個後端會造成資料不同步問題。設計 <code>canceller</code> 結構可以用 <code>map</code> 方式來紀錄目前有多少 worker 請求，其中 map 內的 string 用來記錄任務唯一 ID 識別。</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">type canceler struct {
+  sync.Mutex
+
+  subsciber map[string]chan struct{}
+}
+
+func newCanceler() *canceler {
+  return &amp;canceler{
+    subsciber: make(subsciber map[string]chan struct{}),
+  }
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>接著看 worker 發送一個任務請求時，該如何實現監聽 <code>Cancelled</code> 機制。</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">func (c *canceler) Cancelled(ctx context.Context, id string) (bool, error) {
+  subsciber := make(chan struct{})
+  c.Lock()
+  c.subsciber[id] = subsciber
+  c.Unlock()
+
+  defer func() {
+    c.Lock()
+    delete(c.subsciber, id)
+    c.Unlock()
+  }()
+
+  select {
+  case &lt;-ctx.Done():
+    return false, nil
+  case &lt;-subsciber:
+    return true, nil
+  }
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p><code>Cancelled</code> 內帶有兩個參數，一個是 conetxt 另一個是任務 ID，其中 context 可以用來設計此連線多久後會自動回覆給 worker 沒有收到任何 Cancel 狀態，後者就是紀錄此任務 ID。</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">subsciber := make(chan struct{})
+c.Lock()
+c.subsciber[id] = subsciber
+c.Unlock()</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>上面在 map 紀錄此任務 ID 及宣告 <code>struct{}</code> 通道。等到收到 cancel 或是 context 狀態，就結束函式，並把 map 內的紀錄取消。</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">  defer func() {
+    c.Lock()
+    delete(c.subsciber, id)
+    c.Unlock()
+  }()
+
+  select {
+  case &lt;-ctx.Done():
+    return false, nil
+  case &lt;-subsciber:
+    return true, nil
+  }</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>最後來實現 User 怎麼觸發 <code>Cancel</code> 機制，就是透過上面 map 內的 struct channel 來完成。</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">func (c *canceler) Cancel(ctx context.Context, id string) error {
+  c.Lock()
+  defer c.Unlock()
+  if sub, ok := c.subsciber[id]; ok {
+    close(sub)
+  }
+  return nil
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>用 for 迴圈來掃 c.subsciber 所有任務是否有比對成功，比對成功後，就將 subsciber channel 關閉，這樣在 <code>Cancelled</code> 內就會觸發 channel 通知。最後寫了兩個測試證明這方法是可以正常運作，第一個是透過 User 觸發取消任務</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">func TestUserCancelTask(t *testing.T) {
+  var canceled bool
+  var err error
+  engine := newCanceler()
+  stop := make(chan struct{})
+  go func() {
+    canceled, err = engine.Cancelled(context.Background(), &#34;test123456&#34;)
+    stop &lt;- struct{}{}
+  }()
+  time.Sleep(1 * time.Second)
+  engine.Cancel(context.Background(), &#34;test123456&#34;)
+  &lt;-stop
+
+  if !canceled {
+    t.Fatal(&#34;can&#39;t cancel task&#34;)
+  }
+  if err != nil {
+    t.Fatal(&#34;get error&#34;)
+  }
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>另一個是使用 context 搭配 cancel event 來結束函式</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">func TestContextCancelTask(t *testing.T) {
+  var canceled bool
+  var err error
+  engine := newCanceler()
+  stop := make(chan struct{})
+
+  ctx, cancel := context.WithCancel(context.Background())
+
+  go func() {
+    canceled, err = engine.Cancelled(ctx, &#34;test123456&#34;)
+    stop &lt;- struct{}{}
+  }()
+  cancel()
+  &lt;-stop
+
+  if canceled {
+    t.Fatal(&#34;detect cancel task&#34;)
+  }
+  if err != nil {
+    t.Fatal(&#34;get error&#34;)
+  }
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h2 id="遇到問題">遇到問題</h2>
+<p><img src="https://i.imgur.com/myG5y8I.png" alt="cancel a task"></p>
+<p>服務之間溝通時，總是會遇到服務斷線的問題，假設全部 worker 都跟後端失去連線，這時候 User 觸發了取消任務，這時候上述代碼要如何調整才能讓 worker 恢復連線後又可以正常拿到取消任務的命令？</p>
+<p>其實很簡單，只需要一個簡單的 Timeout 機制，User 按下取消時，先以當下時間加上 <code>5 分鐘</code>，這 5 分鐘是什麼意思呢？也就是 worker 必須在這 5 分鐘內重新連上後端服務才可以正常拿到 cancel 事件，所以在 canceller 內加上 map 存取所有任務時間資訊。大家請注意這 5 分鐘數字，你可以根據自家系統流程而改變。</p>
+<div class="highlight">
+    <span class="highlight-type">diff</span>
+    <pre><code class="language-diff hljs" data-lang="diff">type canceler struct {
+  sync.Mutex
+
+  subsciber map[string]chan struct{}
+&#43; cancelled map[string]time.Time
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "diff";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>接下來在 <code>Cancel</code> 函式內宣告時間</p>
+<div class="highlight">
+    <span class="highlight-type">diff</span>
+    <pre><code class="language-diff hljs" data-lang="diff">func (c *canceler) Cancel(ctx context.Context, id string) error {
+  c.Lock()
+  defer c.Unlock()
+&#43; c.cancelled[id] = time.Now().Add(5 * time.Minute)
+  if sub, ok := c.subsciber[id]; ok {
+    close(sub)
+  }
+&#43; c.clear()
+  return nil
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "diff";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>最後請在 <code>Cancelled</code> 函式內補上底下判斷該任務是否存在</p>
+<div class="highlight">
+    <span class="highlight-type">diff</span>
+    <pre><code class="language-diff hljs" data-lang="diff">func (c *canceler) Cancelled(ctx context.Context, id string) (bool, error) {
+  subsciber := make(chan struct{})
+  c.Lock()
+  c.subsciber[id] = subsciber
+  c.Unlock()
+
+  defer func() {
+    c.Lock()
+    delete(c.subsciber, id)
+    c.Unlock()
+  }()
+
+&#43; c.Lock()
+&#43; _, ok := c.cancelled[id]
+&#43; c.Unlock()
+&#43; if ok {
+&#43;   return true, nil
+&#43; }
+
+  select {
+  case &lt;-ctx.Done():
+    return false, nil
+  case &lt;-subsciber:
+    return true, nil
+  }
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "diff";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>除了解決上述問題外，也要想想怎麼定時清除 <code>c.cancelled</code> 多餘的資訊，避免任務要重新執行時，直接馬上收到 cancel event.</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">func (c *canceler) clear() {
+  now := time.Now()
+  for k, trigger := range c.cancelled {
+    if now.After(trigger) {
+      delete(c.cancelled, k)
+    }
+  }
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><p>最後補上測試，先執行 <code>Cancel</code> 代表 User 取消執行的任務，接著 Worker 發送請求詢問，由於我們有給 5 分鐘緩衝，所以時間內都可以拿到取消任務的指令。</p>
+<div class="highlight">
+    <span class="highlight-type">go</span>
+    <pre><code class="language-go hljs" data-lang="go">func TestUserCancelTaskFirst(t *testing.T) {
+  var canceled bool
+  var err error
+  engine := newCanceler()
+
+  // User cancel task first and
+  _ = engine.Cancel(context.Background(), &#34;test1234&#34;)
+  canceled, err = engine.Cancelled(context.Background(), &#34;test1234&#34;)
+
+  if !canceled {
+    t.Fatal(&#34;can&#39;t get cancel event&#34;)
+  }
+  if err != nil {
+    t.Fatal(&#34;get error&#34;)
+  }
+}</code></pre>
+</div>
+
+<style>
+    .highlight-type {
+        content: "go";
+        position: absolute;
+        opacity: 0.5;
+    }
+</style><h2 id="心得">心得</h2>
+<p>本篇最主要是要用 Go 語言的 Channel 特性來處理兩個服務之間的溝通機制，大家可能想到的解法就是用 Message Queue 來處理，但是有時候把架構想的更簡單一點，用 Go 語言的特性來處理，那就減少一個服務的維運，未來要將此架構轉換到其他平台就會更簡單，其他部門有需求會是將整套服務架設在不同團隊內，這時候架構越簡單，除錯時間會越短。最後附上<a href="https://github.com/go-training/training/tree/master/example51-canceler/schedule">程式碼</a>，大家可以直接取用試試看。</p>
+<p>接下來會介紹關於如何實現 HTTP Server 跟 Worker 的代碼，有興趣可以繼續往下看『<a href="https://blog.wu-boy.com/2023/01/create-server-and-worker-for-cancel-task-in-golang/">系統設計: 建立 Web 及 Worker 服務實現取消任務 (二)</a>』。</p>
+</article>
+
+<div class="content_post_button">
+    
+    <button onclick="window.location.href = 'https:\/\/rcy1314.github.io\/myblog\/posts\/simple-scheduler-with-multiple-worker-using-golang\/'">
+        <span style="color: var(--primary-color);">上一篇</span><br />系統設計: 處理服務讀取多個任務遇到的問題 (Go 語言)
+    </button>
+    
+    
+    <button onclick="window.location.href = 'https:\/\/rcy1314.github.io\/myblog\/posts\/create-server-and-worker-for-cancel-task-in-golang\/'">
+        <span style="color: var(--primary-color);">下一篇</span><br />用 Go 語言建立 Web 及 Worker 服務實現取消任務 (二)
+    </button>
+    
+</div>
+<a class="back_top" href="javascript:window.scrollTo(0,0);">
+    <svg t="1660722824713" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="1359" width="64" height="64">
+        <path
+            d="M484 93.668c-231.038 0-418.333 187.296-418.333 418.335 0 231.038 187.296 418.327 418.333 418.327 231.036 0 418.333-187.289 418.333-418.327C902.334 280.964 715.036 93.668 484 93.668zM372.207 811.881c-0.412 8.174-4.906 12.669-13.493 13.493-6.545 0-11.863-0.614-15.946-1.841-4.504-1.639-6.545-4.906-6.133-9.813 1.629-4.906 4.695-7.148 9.199-6.746 6.948 1.639 10.215 0.613 9.813-3.066l0-96.902-12.266 0c-4.504-0.402-6.746-3.268-6.746-8.586 0.402-4.907 2.855-7.562 7.359-7.974l36.185 0c2.453 0 4.083 1.025 4.906 3.066 1.227-2.855 3.469-4.494 6.747-4.906l82.183 0c4.495 0.412 6.747 3.277 6.747 8.587-0.412 5.318-2.865 8.184-7.36 8.586l-36.798 0-2.453 11.652 23.919 0c10.215-0.402 14.92 3.891 14.106 12.88l0 63.17c-0.412 4.504-3.277 6.957-8.586 7.36-5.318-0.403-8.184-2.856-8.586-7.36l0-57.037c0-1.227-0.613-1.84-1.84-1.84l-43.545 0c-0.824 0.412-1.438 1.025-1.84 1.84l0 55.811c-0.412 4.906-3.277 7.57-8.586 7.974-5.318-0.403-8.184-3.067-8.586-7.974l0-61.943c0-8.586 3.68-12.88 11.04-12.88l14.719 0 3.066-11.652-25.759 0c-2.453 0-5.117-1.016-7.973-3.066-1.227 2.865-3.479 4.293-6.746 4.293l-6.747 0L372.207 811.881zM479.536 824.146c-3.277 4.907-7.571 5.722-12.879 2.454-2.865-1.227-7.571-3.891-14.106-7.974-6.133-3.277-10.838-5.52-14.106-6.746-6.133-2.855-8.586-6.334-7.359-10.426-1.227 2.051-3.68 4.504-7.36 7.359-0.412 0.412-0.824 0.824-1.227 1.227-9.41 7.762-20.239 13.896-32.505 18.399-5.73 1.629-9.813 0.201-12.266-4.294-1.639-4.906 0-8.586 4.906-11.039 18.802-7.762 30.253-15.534 34.345-23.306 4.494-7.359 6.746-21.054 6.746-41.091 0.403-5.722 3.067-8.788 7.973-9.2 5.309 0.412 8.174 3.479 8.586 9.2 0.814 20.852-1.639 36.798-7.36 47.837 4.083-4.906 9.401-5.107 15.946-0.613 4.907 2.865 11.442 6.546 19.626 11.04 3.68 2.453 6.334 4.092 7.973 4.906C481.375 814.736 482.391 818.828 479.536 824.146zM556.198 822.307l-41.704 0c-7.772-0.412-11.864-3.891-12.267-10.426l0-34.345c-0.412-8.989 3.68-13.282 12.267-12.88l42.931 0c7.763-0.402 11.653 3.891 11.653 12.88l0 34.958C569.48 819.029 565.188 822.307 556.198 822.307zM614.462 817.4c-6.545 0-11.652-0.824-15.332-2.453-4.092-2.051-5.318-5.309-3.68-9.813 1.629-4.906 5.107-6.747 10.426-5.52 11.04 2.453 15.735-1.841 14.106-12.88-0.412-8.174-5.933-18.399-16.56-30.665-3.68-3.68-4.293-9.2-1.84-16.56 4.494-13.895 7.561-24.532 9.199-31.892l-16.559 0c-1.227 0-2.051 0.824-2.453 2.453l0 110.395c-0.412 5.31-3.067 8.175-7.974 8.587-5.318-0.412-8.184-3.277-8.586-8.587l0-65.01c-1.227 1.639-2.865 2.453-4.906 2.453l-69.304 0c-4.504-0.402-6.957-3.268-7.359-8.586 0.402-5.31 2.855-8.175 7.359-8.587l14.72 0c-0.824-0.814-3.68-5.721-8.586-14.719-2.051-5.31-0.613-8.989 4.293-11.04l-7.36 0c-4.504-0.402-6.957-3.268-7.359-8.586 0.402-5.309 2.855-8.174 7.359-8.586l22.079 0c-0.824-1.227-1.227-2.453-1.227-3.681-1.227-4.082 0.613-7.359 5.52-9.813 5.721-2.041 9.401-1.016 11.04 3.066 1.227 3.68 2.654 7.158 4.293 10.427l20.239 0c4.494 0.412 6.947 3.277 7.359 8.586-0.412 5.318-2.865 8.184-7.359 8.586l-47.225 0c2.855 1.639 6.334 7.36 10.426 17.173 1.227 4.092 0.814 6.957-1.227 8.586l13.493 0c0.402-1.227 1.016-2.855 1.84-4.906 2.453-6.133 4.082-11.039 4.906-14.72 1.629-4.082 5.107-5.721 10.426-4.906 4.906 2.051 6.747 5.318 5.521 9.813-0.824 2.051-1.639 4.504-2.454 7.359-1.227 3.277-2.252 5.932-3.066 7.973l11.04 0c2.453 0 4.082 0.613 4.906 1.84l0-41.704c0-8.175 3.066-12.056 9.199-11.653l36.799 0c9.4 0 13.08 5.117 11.039 15.333 0 0.412-1.025 3.891-3.066 10.426-3.277 10.226-5.52 17.786-6.746 22.692-1.227 3.68-1.84 6.344-1.84 7.973 0.402 1.228 1.629 3.067 3.68 5.521 8.586 13.09 13.281 25.356 14.105 36.798C638.17 807.387 630.408 816.988 614.462 817.4zM646.896 466.315c-7.488 7.449-18.815 7.642-25.649 0.806-0.538-0.537-1.074-0.922-1.536-1.535L502.752 348.858l-0.192 280.106c0 9.139-8.601 16.549-19.198 16.549-10.598 0-18.738-7.41-18.738-16.549 0-0.729-0.115-1.306 0-2.034l-0.192-278.072L347.513 465.586c-0.422 0.652-0.959 0.999-1.536 1.535-6.834 6.874-18.162 6.681-25.649-0.806-7.488-7.488-8.025-19.122-1.152-25.995L467.12 292.03c2.112-3.263 5.26-5.913 9.369-7.333 2.074-0.807 4.262-1.152 6.528-1.113 0.23 0 0.383-0.116 0.614-0.116 0.153 0 0.307 0.078 0.46 0.078 2.304-0.078 4.57 0.307 6.72 1.152 3.994 1.421 7.142 4.07 9.254 7.219L648.048 440.32C654.92 447.155 654.383 458.827 646.896 466.315zM636.605 238.121 331.771 238.121c-9.407 0-17.049-7.564-17.049-16.857 0-9.292 7.642-16.856 17.049-16.856l304.835 0c9.445 0 17.048 7.564 17.048 16.856C653.653 230.557 646.013 238.121 636.605 238.121zM549.452 781.829 521.24 781.829c-1.227 0-2.051 0.824-2.453 2.453l0 19.013c0.402 1.639 1.227 2.453 2.453 2.453l28.212 0c1.629-0.402 2.453-1.227 2.453-2.453l0-19.013C551.905 782.653 551.081 781.829 549.452 781.829z"
+            p-id="1360" fill="#343232"></path>
+    </svg>
+</a>
+
+
+    <div class="center_main_contents_title">
+    <h2>目录</h2>
+</div>
+<div class="center_main_contents_main">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#教學影片">教學影片</a></li>
+    <li><a href="#使用情境">使用情境</a></li>
+    <li><a href="#單機實作方式">單機實作方式</a></li>
+    <li><a href="#遇到問題">遇到問題</a></li>
+    <li><a href="#心得">心得</a></li>
+  </ul>
+</nav>
+</div>
+</div>
+
+</div>
+</body>
+
+
+
+
+
+</html>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on NOISE</title>
+    <link>https://rcy1314.github.io/myblog/tags/</link>
+    <description>Recent content in Tags on NOISE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 17 Sep 2022 21:30:26 +0800</lastBuildDate><atom:link href="https://rcy1314.github.io/myblog/tags/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>diagrams</title>
+      <link>https://rcy1314.github.io/myblog/tags/diagrams/</link>
+      <pubDate>Sat, 17 Sep 2022 21:30:26 +0800</pubDate>
+      
+      <guid>https://rcy1314.github.io/myblog/tags/diagrams/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>draw.io</title>
+      <link>https://rcy1314.github.io/myblog/tags/draw.io/</link>
+      <pubDate>Sat, 17 Sep 2022 21:30:26 +0800</pubDate>
+      
+      <guid>https://rcy1314.github.io/myblog/tags/draw.io/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>excalidraw</title>
+      <link>https://rcy1314.github.io/myblog/tags/excalidraw/</link>
+      <pubDate>Sat, 17 Sep 2022 21:30:26 +0800</pubDate>
+      
+      <guid>https://rcy1314.github.io/myblog/tags/excalidraw/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PlantUML</title>
+      <link>https://rcy1314.github.io/myblog/tags/plantuml/</link>
+      <pubDate>Sat, 17 Sep 2022 21:30:26 +0800</pubDate>
+      
+      <guid>https://rcy1314.github.io/myblog/tags/plantuml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VSCode</title>
+      <link>https://rcy1314.github.io/myblog/tags/vscode/</link>
+      <pubDate>Sat, 17 Sep 2022 21:30:26 +0800</pubDate>
+      
+      <guid>https://rcy1314.github.io/myblog/tags/vscode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dependency injection</title>
+      <link>https://rcy1314.github.io/myblog/tags/dependency-injection/</link>
+      <pubDate>Sat, 10 Sep 2022 13:17:01 +0800</pubDate>
+      
+      <guid>https://rcy1314.github.io/myblog/tags/dependency-injection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://rcy1314.github.io/myblog/tags/golang/</link>
+      <pubDate>Sat, 10 Sep 2022 13:17:01 +0800</pubDate>
+      
+      <guid>https://rcy1314.github.io/myblog/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
